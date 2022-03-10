@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage>
                     const SizedBox(
                       height: 2,
                     ),
-                    const RoundedButtom(title: 'LOGIN'),
+                    const RoundedButtom(title: 'LOGtesteIN'),
                     // BOTÃO DE LOGIN
                   ],
                 ),
