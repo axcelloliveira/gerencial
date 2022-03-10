@@ -48,28 +48,13 @@ class _LoginPageState extends State<LoginPage>
         .animate(
             CurvedAnimation(parent: animationController, curve: Curves.linear));
     return Scaffold(
-      body: Stack(
+      body: ListView(
         children: [
-          //CANCEL BUTTOM
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: kSize.width,
-              height: kSize.height * 0.1,
-              alignment: Alignment.bottomCenter,
-              child: IconButton(
-                  onPressed: () {
-                    animationController.reverse();
-                    setState(() {
-                      isLogin != isLogin;
-                    });
-                  },
-                  icon: const Icon(Icons.close)),
-            ),
-          ),
+         const SizedBox(height: 60,),
           //Formulário de Login
           Align(
-            alignment: Alignment.center,
+
+            alignment: Alignment.topCenter,
             child: SingleChildScrollView(
               child: Container(
                 width: kSize.width,
@@ -81,13 +66,8 @@ class _LoginPageState extends State<LoginPage>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      ' ',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
                     const SizedBox(
-                      height: 40,
+                      height: 2,
                     ),
                     Image.asset("assets/images/logo_nt.png"),
                     //LOGO NORDESTE TUBETES
@@ -108,112 +88,64 @@ class _LoginPageState extends State<LoginPage>
                           Icons.lock,
                           color: kPrimaryColor,
                         )),
+
                     const SizedBox(
-                      height: 2,
+                      height: 9,
                     ),
-                    const RoundedButtom(title: 'LOGIN'),
+
+                    const RoundedButtom(title: 'LOGIN', backGroundColor: kPrimaryColor, borderColor: Colors.transparent, textColor: Colors.white, type: 'login',),
+                  const  SizedBox(height: 15,),
+                    const RoundedButtom(title: 'REGISTRE', backGroundColor: kBackgroundColor, borderColor: kPrimaryColor, textColor: kPrimaryColor, type: 'register', ),
+
+
                     // BOTÃO DE LOGIN
                   ],
                 ),
               ),
             ),
           ),
+          //SizedBox(height: 10,),
 
           //Container de Cadastro
-
-          AnimatedBuilder(
-            animation: animationController,
-            builder: (context, child) {
-              return buildRegisterContainer();
-             },
-           ),
-
-          Align(
-            alignment: Alignment.center,
-            child: SingleChildScrollView(
-              child: Container(
-                width: kSize.width,
-                height: defaultLoginSize,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      ' ',
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Image.asset("assets/images/logo_nt.png"),
-                    //LOGO NORDESTE TUBETES
-                    const SizedBox(height: 40),
-                    RoundedInput(
-                        size: kSize,
-                        hint: user,
-                        obscure: false,
-                        icon: const Icon(
-                          Icons.email,
-                          color: kPrimaryColor,
-                        )),
-                    RoundedInput(
-                        size: kSize,
-                        hint: password,
-                        obscure: true,
-                        icon: const Icon(
-                          Icons.lock,
-                          color: kPrimaryColor,
-                        )),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    const RoundedButtom(title: 'LOGtesteIN'),
-                    // BOTÃO DE LOGIN
-                  ],
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
   }
 
   Widget buildRegisterContainer() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        width: double.infinity,
-        height: containerSize.value,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(100),
-            topRight: Radius.circular(100),
-          ),
-          color: kBackgroundColor,
-        ),
-        alignment: Alignment.center,
-        child: GestureDetector(
-          onTap: () {
-            animationController.forward();
-
-            setState(() {
-              isLogin != isLogin;
-            });
-          },
-          child: const Text(
-            "Não tem uma conta? Registre-se!",
-            style: TextStyle(
-              color: kPrimaryColor,
-              fontSize: 18,
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            width: double.infinity,
+            height: containerSize.value,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(100),
+                topRight: Radius.circular(100),
+              ),
+              color: kBackgroundColor,
+            ),
+            alignment: Alignment.center,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  animationController.forward();
+                  isLogin != isLogin;
+                });
+              },
+              child: const Text(
+                "Não tem uma conta? Registre-se!",
+                style: TextStyle(
+                  color: kPrimaryColor,
+                  fontSize: 18,
+                ),
+              ),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
