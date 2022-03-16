@@ -42,24 +42,14 @@ class _LoginPageState extends State<LoginPage>
 
     double defaultLoginSize = kSize.height -
         (kSize.height * 0.2); //ALTURA CONTAINER PRINCIPAL - LOGIN
-<<<<<<< Updated upstream
     double defaultRegisterSize = kSize.height - (kSize.height * 0.1);
-    containerSize = Tween<double>(
-            begin: kSize.height * 0.1, end: defaultRegisterSize)
-        .animate(
-            CurvedAnimation(parent: animationController, curve: Curves.linear));
-    return Scaffold(
-      body: ListView(
-        children: [
-         const SizedBox(height: 60,),
-=======
+
     return Scaffold(
       body: ListView(
         children: [
           const SizedBox(
             height: 60,
           ),
->>>>>>> Stashed changes
           //Formulário de Login
           Align(
             alignment: Alignment.topCenter,
@@ -122,14 +112,12 @@ class _LoginPageState extends State<LoginPage>
                       type: 'login',
                     ),
 
-<<<<<<< Updated upstream
-                    const RoundedButtom(title: 'LOGIN', backGroundColor: kPrimaryColor, borderColor: Colors.transparent, textColor: Colors.white, type: 'login',),
+                    const RoundedButtom(title: 'LOGIN', backGroundColor: kPrimaryColor, borderColor: Colors.transparent, textColor: Colors.white, type: 'login', password: '', username: '',),
                   const  SizedBox(height: 15,),
-                    const RoundedButtom(title: 'REGISTRE', backGroundColor: kBackgroundColor, borderColor: kPrimaryColor, textColor: kPrimaryColor, type: 'register', ),
+                    const RoundedButtom(title: 'REGISTRE', backGroundColor: kBackgroundColor, borderColor: kPrimaryColor, textColor: kPrimaryColor, type: 'register', password: '', username: '', ),
 
 
                     // BOTÃO DE LOGIN
-=======
                     const SizedBox(
                       height: 10,
                     ),
@@ -143,7 +131,6 @@ class _LoginPageState extends State<LoginPage>
                       type: 'register',
                     ),
                     // BOTÃO DE LOGIN E CRIAR CONTA
->>>>>>> Stashed changes
                   ],
                 ),
               ),
