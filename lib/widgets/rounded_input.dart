@@ -10,12 +10,16 @@ class RoundedInput extends StatelessWidget {
     required this.hint,
     required this.obscure,
     required this.icon,
+    required this.passController,
+    required this.userController
   }) : super(key: key);
 
   final Size? size;
   final String?  hint;
   final bool obscure;
   final Icon icon;
+  final String userController;
+  final String passController;
 
 
 
