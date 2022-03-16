@@ -38,12 +38,9 @@ dependencies:
   get: ^4.6.1
   flutter_svg: ^1.0.3
   local_auth: ^1.1.11
-<<<<<<< Updated upstream
-
-=======
   shared_preferences: ^2.0.13
   http: ^0.13.4
->>>>>>> Stashed changes
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
