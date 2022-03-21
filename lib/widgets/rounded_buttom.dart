@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/comuns/authenticate.dart';
-
 import '../connections/login_connection.dart';
 import '../constants.dart';
 import '../controller/login_controller.dart';
+
 
 class RoundedButtom extends StatelessWidget {
   const RoundedButtom(
@@ -34,11 +34,17 @@ class RoundedButtom extends StatelessWidget {
       onPressed: () {
         if (type == 'login') {
           if (controller.username == 0) {
-            loginConnection(username, password);
+            if(username != '' && password != ''){
+              loginConnection(username, password);
+            }else{
+              Get.snackbar('Nordeste Tubetes', 'Insira o usuário e senha para fazer login');
+            }
           } else {
             authenticateMe();
           }
-        } else {}
+        } else {
+
+        }
       },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(Colors.white),

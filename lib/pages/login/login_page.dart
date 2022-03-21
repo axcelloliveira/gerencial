@@ -112,10 +112,6 @@ class _LoginPageState extends State<LoginPage>
                       type: 'login',
                     ),
 
-                    const RoundedButtom(title: 'LOGIN', backGroundColor: kPrimaryColor, borderColor: Colors.transparent, textColor: Colors.white, type: 'login', password: '', username: '',),
-                  const  SizedBox(height: 15,),
-                    const RoundedButtom(title: 'REGISTRE', backGroundColor: kBackgroundColor, borderColor: kPrimaryColor, textColor: kPrimaryColor, type: 'register', password: '', username: '', ),
-
 
                     // BOTÃO DE LOGIN
                     const SizedBox(
