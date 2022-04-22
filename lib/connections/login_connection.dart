@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
 Future loginConnection(String user, String password) async {
-
-  var url = 'http://10.100.10.161:8083/eventos/loginCola?pLogin=$user&pSenha=$password';
+  var url =
+      'http://10.100.10.161:8083/eventos/loginCola?pLogin=$user&pSenha=$password';
 
   print(url);
 
@@ -12,16 +12,19 @@ Future loginConnection(String user, String password) async {
   try {
     Get.defaultDialog(
         barrierDismissible: false,
-        title: 'AGUARDE',
+        title: 'Validando informações',
         content: const Center(
-        child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(),
         ));
-    resposta = await http.post(Uri.parse(url));
+    resposta =
+        await http.get(Uri.parse(url)).timeout(const Duration(seconds: 12));
     if (resposta.statusCode == 200) {
       if (resposta.body != 'erro') {
+        Get.closeAllSnackbars();
         Get.back();
         Get.snackbar("Nordeste Tubetes", "Login Correto");
       } else {
+        Get.closeAllSnackbars();
         Get.back();
         Get.snackbar("Nordeste Tubetes", "Login Incorreto");
       }
@@ -30,7 +33,7 @@ Future loginConnection(String user, String password) async {
       Get.snackbar("Nordeste Tubetes", "Falha na comunicação com o servidor");
     }
   } catch (error) {
-    print(error);
-    Get.snackbar("Nordeste Tubetes", "Falha grave na execução do aplicativo. Tente reiniciar o mesmo.");
+    Get.snackbar("Nordeste Tubetes",
+        "Falha grave na execução do aplicativo. Tente reiniciar o mesmo.");
   }
 }

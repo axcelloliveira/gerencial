@@ -21,9 +21,7 @@ class _LoginPageState extends State<LoginPage>
   void initState() {
     // TODO: implement initState
     super.initState();
-   if (checkingForBioMetrics() == true){
-     print ('xzxxxxx');
-   }
+
   }
 
   @override
@@ -35,9 +33,11 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
+    String? usuario = '';
+    String? senha = '';
     const String user = "Usuário"; //HINT DO TEXTFIELD
     const String password = 'Senha'; // HINT DO TEXTFIELD
-    TextEditingController tPassoword = TextEditingController();
+    TextEditingController tPassword = TextEditingController();
     TextEditingController tUser      =      TextEditingController();
 
     double defaultLoginSize = kSize.height -
@@ -64,9 +64,11 @@ class _LoginPageState extends State<LoginPage>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     const SizedBox(
                       height: 2,
                     ),
+
                     Image.asset("assets/images/logo_nt.png"),
                     //LOGO NORDESTE TUBETES
                     const SizedBox(height: 40),
@@ -87,7 +89,7 @@ class _LoginPageState extends State<LoginPage>
                     )),
                     InputContainer(
                         child: TextField(
-                      controller: tPassoword,
+                      controller: tPassword,
                       cursorColor: kPrimaryColor,
                       obscureText: true,
                       decoration: const InputDecoration(
@@ -98,26 +100,32 @@ class _LoginPageState extends State<LoginPage>
                         hintText: user,
                         border: InputBorder.none,
                       ),
-                    )),
+                    )
+                    ),
                     const SizedBox(
                       height: 9,
                     ),
-                    RoundedButtom(
+                   Obx(()=> RoundedButtom(
+                      sendData: (){
+                       controller.tryLogin(tUser.text.obs, tPassword.text.obs);
+                        },
                       username: tUser.text,
-                      password: tPassoword.text,
+                      password: controller.tPassoword.toString(),
                       title: 'LOGIN',
                       backGroundColor: kPrimaryColor,
                       borderColor: Colors.transparent,
                       textColor: Colors.white,
                       type: 'login',
-                    ),
-
+                    )),
 
                     // BOTÃO DE LOGIN
                     const SizedBox(
                       height: 10,
                     ),
-                   const RoundedButtom(
+                    RoundedButtom(
+                      sendData: (){
+                       print(tUser.text);
+                     },
                       username: '',
                       password: '',
                       title: 'CRIAR CONTA',
@@ -126,6 +134,7 @@ class _LoginPageState extends State<LoginPage>
                       textColor: kPrimaryColor,
                       type: 'register',
                     ),
+
                     // BOTÃO DE LOGIN E CRIAR CONTA
                   ],
                 ),
