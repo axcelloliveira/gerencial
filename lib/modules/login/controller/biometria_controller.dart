@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:norteste_gerencial/pages/login/login_page.dart';
-import '../comuns/custom_snackbar.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-
-import '../pages/menu_principal.dart';
-
+import 'package:norteste_gerencial/comuns/custom_snackbar.dart';
+import '../../../comuns/custom_snackbar.dart';
+import '../login_page.dart';
 
 class BiometriaController extends GetxController {
   var localAuth = LocalAuthentication();
@@ -30,9 +27,11 @@ class BiometriaController extends GetxController {
     bool hasLocalAuthentication = await localAuth.canCheckBiometrics;
     if (hasLocalAuthentication) {
       biometricsAvaliable.value = true;
-      List<BiometricType> availableBiometrics = await localAuth.getAvailableBiometrics();
+      List<BiometricType> availableBiometrics =
+          await localAuth.getAvailableBiometrics();
       hasFaceLock.value = availableBiometrics.contains(BiometricType.face);
-      hasFingerPrintLock.value = availableBiometrics.contains(BiometricType.fingerprint);
+      hasFingerPrintLock.value =
+          availableBiometrics.contains(BiometricType.fingerprint);
     } else {
       biometricsAvaliable.value = false;
     }
@@ -44,9 +43,12 @@ class BiometriaController extends GetxController {
         signInTitle: 'Biometria Requerida',
         cancelButton: 'Cancelar',
         goToSettingsButton: 'Configurações',
-        goToSettingsDescription: 'Configure a validação por biometria ou FaceID.',
+        goToSettingsDescription:
+            'Configure a validação por biometria ou FaceID.',
         biometricHint: '',
+
       );
+
       isUserAuthenticated.value = await localAuth.authenticate(
         localizedReason: 'Autentique sua identidade',
         biometricOnly: true,
@@ -59,16 +61,16 @@ class BiometriaController extends GetxController {
             title: "Sucesso",
             message: "Você foi autenticado",
             backgroundColor: Colors.green);
-            Get.offAll(()=> const MenuPrincipal());
+        Get.toNamed('/MenuPage');
       } else {
-        Get.offAll(()=>loginPage);
+        Get.offAll(() => loginPage);
         showSnackBar(
             title: "Error",
             message: "Autenticação cancelada",
             backgroundColor: Colors.red);
       }
     } catch (e) {
-      Get.offAll(()=>loginPage);
+      Get.offAll(const LoginPage());
       showSnackBar(
           title: "Error", message: e.toString(), backgroundColor: Colors.red);
     }

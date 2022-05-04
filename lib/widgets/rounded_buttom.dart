@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../connections/login_connection.dart';
 import '../constants.dart';
-import '../controller/login_controller.dart';
+import '../modules/login/controller/login_controller.dart';
+import '../modules/login/repository/login_connection.dart';
 
 class RoundedButtom extends StatelessWidget {
   const RoundedButtom(

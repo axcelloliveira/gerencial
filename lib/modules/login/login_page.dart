@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/constants.dart';
-import '../../controller/login_controller.dart';
+import 'controller/login_controller.dart';
 import '../../widgets/input_container.dart';
 import '../../widgets/rounded_buttom.dart';
-import '../../comuns/check_bio.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,7 +20,6 @@ class _LoginPageState extends State<LoginPage>
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
 
   @override
@@ -33,16 +31,13 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    String? usuario = '';
-    String? senha = '';
     const String user = "Usuário"; //HINT DO TEXTFIELD
     const String password = 'Senha'; // HINT DO TEXTFIELD
     TextEditingController tPassword = TextEditingController();
-    TextEditingController tUser      =      TextEditingController();
+    TextEditingController tUser = TextEditingController();
 
     double defaultLoginSize = kSize.height -
         (kSize.height * 0.2); //ALTURA CONTAINER PRINCIPAL - LOGIN
-    double defaultRegisterSize = kSize.height - (kSize.height * 0.1);
 
     return Scaffold(
       body: ListView(
@@ -64,7 +59,6 @@ class _LoginPageState extends State<LoginPage>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     const SizedBox(
                       height: 2,
                     ),
@@ -74,58 +68,62 @@ class _LoginPageState extends State<LoginPage>
                     const SizedBox(height: 40),
 
                     InputContainer(
-                        child: TextField(
-                      cursorColor: kPrimaryColor,
-                      obscureText: false,
-                      controller: tUser,
-                      decoration: const InputDecoration(
-                        icon: Icon(
-                          Icons.email,
-                          color: kPrimaryColor,
+                      child: TextField(
+                        cursorColor: kPrimaryColor,
+                        obscureText: false,
+                        controller: tUser,
+                        decoration: const InputDecoration(
+                          icon: Icon(
+                            Icons.email,
+                            color: kPrimaryColor,
+                          ),
+                          hintText: password,
+                          border: InputBorder.none,
                         ),
-                        hintText: password,
-                        border: InputBorder.none,
                       ),
-                    )),
+                    ),
                     InputContainer(
-                        child: TextField(
-                      controller: tPassword,
-                      cursorColor: kPrimaryColor,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        icon: Icon(
-                          Icons.lock,
-                          color: kPrimaryColor,
+                      child: TextField(
+                        controller: tPassword,
+                        cursorColor: kPrimaryColor,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          icon: Icon(
+                            Icons.lock,
+                            color: kPrimaryColor,
+                          ),
+                          hintText: user,
+                          border: InputBorder.none,
                         ),
-                        hintText: user,
-                        border: InputBorder.none,
                       ),
-                    )
                     ),
                     const SizedBox(
                       height: 9,
                     ),
-                   Obx(()=> RoundedButtom(
-                      sendData: (){
-                       controller.tryLogin(tUser.text.obs, tPassword.text.obs);
+                    Obx(
+                      () => RoundedButtom(
+                        sendData: () {
+                          controller.tryLogin(
+                              tUser.text.obs, tPassword.text.obs);
                         },
-                      username: tUser.text,
-                      password: controller.tPassoword.toString(),
-                      title: 'LOGIN',
-                      backGroundColor: kPrimaryColor,
-                      borderColor: Colors.transparent,
-                      textColor: Colors.white,
-                      type: 'login',
-                    )),
+                        username: tUser.text,
+                        password: controller.tPassoword.toString(),
+                        title: 'LOGIN',
+                        backGroundColor: kPrimaryColor,
+                        borderColor: Colors.transparent,
+                        textColor: Colors.white,
+                        type: 'login',
+                      ),
+                    ),
 
                     // BOTÃO DE LOGIN
                     const SizedBox(
                       height: 10,
                     ),
                     RoundedButtom(
-                      sendData: (){
-                       print(tUser.text);
-                     },
+                      sendData: () {
+
+                      },
                       username: '',
                       password: '',
                       title: 'CRIAR CONTA',
@@ -141,16 +139,8 @@ class _LoginPageState extends State<LoginPage>
               ),
             ),
           ),
-          //SizedBox(height: 10,),
-
-          //Container de Cadastro
         ],
       ),
     );
-  }
-
-  void firstAuth() {
-    controller.verifyAccess();
-    print(controller.username.toString());
   }
 }

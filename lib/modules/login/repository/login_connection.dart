@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import '../../../comuns/custom_snackbar.dart';
 
 Future loginConnection(String user, String password) async {
   var url =
-      'http://10.100.10.161:8083/eventos/loginCola?pLogin=$user&pSenha=$password';
-
-  print(url);
+      'http://10.100.10.161:8083/eventos/Login?Usuario=$user&Senha=$password';
 
   http.Response resposta;
   try {
@@ -22,7 +21,11 @@ Future loginConnection(String user, String password) async {
       if (resposta.body != 'erro') {
         Get.closeAllSnackbars();
         Get.back();
-        Get.snackbar("Nordeste Tubetes", "Login Correto");
+        Get.toNamed('/MenuPage');
+        showSnackBar(
+            message: 'Você foi autenticado com sucesso',
+            title: 'Sucesso',
+            backgroundColor: Colors.green);
       } else {
         Get.closeAllSnackbars();
         Get.back();
