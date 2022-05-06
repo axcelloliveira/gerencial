@@ -11,26 +11,23 @@ class GeneralInfoCard extends GetView<TopAppBarController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(13.0),
+      padding: const EdgeInsets.only(right: 20.0, left: 20),
       child: controller.obx(
         (state) {
           return SizedBox(
             height: 135,
             width: MediaQuery.of(context).size.width,
-
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 1,
               itemBuilder: (_, index) {
                 final CardDataModel item = state[index];
-                  print(item.PROD_ACUMULADA.toString());
-                   return MenuCard(
-                  pesoEstoque: item.PESO_ESTOQUE.toString(),
-                     pesoPapel: item.PESO_PAPEL.toString(),
-                     valorPapel: item.VALOR_PAPEL.toString(),
-                     prodDiaria: item.PROD_DIARIA.toString(),
-                     prodAcumulada: item.PROD_ACUMULADA.toString(),
-
+                return MenuCard(
+                  pesoEstoque: item.pesoEstoque.toString(),
+                  pesoPapel: item.pesoPapel.toString(),
+                  valorPapel: item.valorPapel.toString(),
+                  prodDiaria: item.prodDiaria.toString(),
+                  prodAcumulada: item.prodAcumulada.toString(),
                 );
               },
             ),
@@ -45,7 +42,7 @@ class GeneralInfoCard extends GetView<TopAppBarController> {
                 Text(error!),
                 TextButton(
                   onPressed: () => controller.findCardData(),
-                  child: Text('double.parse(source)'),
+                  child: const Text('Tentar novamente'),
                 )
               ],
             ),
@@ -79,22 +76,3 @@ class GeneralInfoCard extends GetView<TopAppBarController> {
     );
   }
 }
-//ow(
-//           children:  [
-//           const  MenuCard(
-//               title: 'Estoque de papel',
-//             ),
-//        const     MenuCard(
-//               title: 'Aguardando produção',
-//             ),
-//             MenuCard(
-//               title: 'Produção acumulada do mês ${DateTime.now().month}',
-//             ),
-//           const  MenuCard(
-//               title: 'Produção do dia anterior',
-//             ),
-//           const  MenuCard(
-//               title: 'Estoque de Produto Acabado',
-//             ),
-//           ],
-//         ),

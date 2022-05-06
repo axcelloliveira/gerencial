@@ -19,6 +19,7 @@ class CardsDetails extends StatelessWidget {
       height: deviceHeight / 3,
       width: deviceWidth / 1.2,
       child: Card(
+        elevation: 5,
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,8 +91,7 @@ class CardsDetails extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: GestureDetector(
-
-                    onTap: (){},
+                    onTap: () {},
                     child: Text('+ Detalhes',
                         style: GoogleFonts.lato(
                             textStyle: const TextStyle(color: Colors.blue))),

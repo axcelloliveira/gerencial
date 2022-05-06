@@ -8,17 +8,15 @@ class FloatBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingNavbar(
       onTap: (int val) {
-        print(val);
       },
       backgroundColor: Colors.white,
-      selectedItemColor: Colors.black,
-      selectedBackgroundColor: Colors.yellow,
+      selectedItemColor: Colors.white,
+      selectedBackgroundColor: Colors.brown[600],
       unselectedItemColor: Colors.black,
       currentIndex: 0,
       elevation: 10,
       items: [
         FloatingNavbarItem(icon: Icons.home, title: 'Home'),
-        // FloatingNavbarItem(icon: Icons.explore, title: 'Explore'),
         FloatingNavbarItem(icon: Icons.pie_chart_outline, title: 'Gráficos'),
         FloatingNavbarItem(icon: Icons.settings, title: 'Configurações'),
       ],

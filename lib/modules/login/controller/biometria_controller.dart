@@ -46,7 +46,6 @@ class BiometriaController extends GetxController {
         goToSettingsDescription:
             'Configure a validação por biometria ou FaceID.',
         biometricHint: '',
-
       );
 
       isUserAuthenticated.value = await localAuth.authenticate(

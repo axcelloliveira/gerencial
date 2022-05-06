@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
@@ -31,7 +30,7 @@ class GeneralLastSent extends GetView {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 0.0, top: 10),
-              child: Container(
+              child: SizedBox(
                 height: deviceHeight / 4.5,
                 width: deviceWidth / 1.15,
                 child: ListView.builder(
@@ -39,7 +38,7 @@ class GeneralLastSent extends GetView {
                     padding: const EdgeInsets.only(top: 10),
                     itemCount: 4,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
+                      return SizedBox(
                         height: 50,
                         width: deviceWidth/1.1,
                         //color: Colors.amber,
