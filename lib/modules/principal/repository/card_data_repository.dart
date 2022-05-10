@@ -19,10 +19,11 @@ class CardDataRepository implements ICardDataRepository {
       return body
           .map<CardDataModel>((resp) => CardDataModel.fromMap(resp))
           .toList();
+
     });
 
     if (response.hasError) {
-      throw Exception('Erro ao buscar usuários');
+      throw Exception('Erro ao buscar Cards');
     }
     return response.body!;
   }

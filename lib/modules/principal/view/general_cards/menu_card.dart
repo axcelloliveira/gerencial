@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:norteste_gerencial/modules/principal/view/cards_details.dart';
+import 'package:norteste_gerencial/modules/principal/view/general_cards/cards_details.dart';
 
 class MenuCard extends StatelessWidget {
   final String pesoEstoque;

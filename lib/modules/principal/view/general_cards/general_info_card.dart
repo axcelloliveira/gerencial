@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/modules/principal/controller/top_app_bar_controller.dart';
 import 'package:norteste_gerencial/modules/principal/model/card_data_model.dart';
-import 'package:norteste_gerencial/modules/principal/view/menu_card.dart';
+import 'package:norteste_gerencial/modules/principal/view/general_cards/menu_card.dart';
 import 'package:shimmer/shimmer.dart';
 
 class GeneralInfoCard extends GetView<TopAppBarController> {
@@ -43,7 +43,7 @@ class GeneralInfoCard extends GetView<TopAppBarController> {
                 TextButton(
                   onPressed: () => controller.findCardData(),
                   child: const Text('Tentar novamente'),
-                )
+                ),
               ],
             ),
           );

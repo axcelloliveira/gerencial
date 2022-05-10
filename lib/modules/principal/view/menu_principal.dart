@@ -4,7 +4,7 @@ import 'package:norteste_gerencial/widgets/custom_drawer/custom_drawer.dart';
 import '../../../comuns/responsive.dart';
 import '../../../widgets/float_bottom_bar.dart';
 import '../controller/menu_principal_controller.dart';
-import 'general_info_card.dart';
+import 'general_cards/general_info_card.dart';
 import 'general_last_sent.dart';
 import 'animated_search.dart';
 
@@ -35,7 +35,7 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
           )
         ],
       ),
-      drawer:  const CustomDrawer(),
+      drawer:  CustomDrawer(),
       extendBody: true,
       bottomNavigationBar: const FloatBottomBar(),
       body: Responsive(

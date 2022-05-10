@@ -10,7 +10,7 @@ import 'package:norteste_gerencial/modules/principal/view/menu_principal.dart';
 import 'package:norteste_gerencial/modules/splash/splash_page.dart';
 import 'constants.dart';
 import 'modules/principal/bindings/top_app_bar_bindings.dart';
-import 'modules/principal/view/general_info_card.dart';
+import 'modules/principal/view/general_cards/general_info_card.dart';
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
       initialBinding: GeneralBindings(),
       getPages: [
         GetPage(

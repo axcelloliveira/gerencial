@@ -36,6 +36,7 @@ class AnimatedSearch extends StatelessWidget {
                     decoration: InputDecoration(
                       floatingLabelAlignment: FloatingLabelAlignment.start,
                       fillColor: Colors.white,
+                      enabled: value.selectedFilter != 'Filtrar por' ? true : false,
                       hintText: value.selectedFilter != 'Filtrar por'
                           ? "Buscando por ${value.selectedFilter}..."
                           : "Como deseja filtrar?",
