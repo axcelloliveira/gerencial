@@ -10,7 +10,7 @@ class CardDataRepository implements ICardDataRepository {
   @override
   Future<List<CardDataModel>> findAllData() async {
     final response = await restClient.get(
-        'http://10.100.10.161:8083/eventos2/cardsDiarios', decoder: (body) {
+        ':8083/eventos2/cardsDiarios', decoder: (body) {
       if (body is List) {
         return body
             .map<CardDataModel>((resp) => CardDataModel.fromMap(resp))
@@ -19,9 +19,7 @@ class CardDataRepository implements ICardDataRepository {
       return body
           .map<CardDataModel>((resp) => CardDataModel.fromMap(resp))
           .toList();
-
     });
-
     if (response.hasError) {
       throw Exception('Erro ao buscar Cards');
     }

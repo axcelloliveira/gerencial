@@ -50,7 +50,7 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
               const SizedBox(
                 height: 10,
               ),
-              const GeneralLastSent(),
+               GeneralLastSent(),
               //LastSent(),
             ],
           ),

@@ -1,11 +1,13 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:norteste_gerencial/local_data/user_local_data.dart';
 import '../../../comuns/custom_snackbar.dart';
 
 Future loginConnection(String user, String password) async {
   var url =
-      'http://10.100.10.161:8083/eventos/Login?Usuario=$user&Senha=$password';
+      'http://10.100.10.161:8083/eventos2/loginNuvem?Usuario=$user&Senha=$password';
 
   http.Response resposta;
   try {
@@ -17,8 +19,20 @@ Future loginConnection(String user, String password) async {
         ));
     resposta =
         await http.get(Uri.parse(url)).timeout(const Duration(seconds: 12));
+
     if (resposta.statusCode == 200) {
       if (resposta.body != 'erro') {
+        UserLocalData userLocalData = UserLocalData();
+
+        var parsedJson = jsonDecode(resposta.body)[0];
+        String username = parsedJson['NOME'];
+        String position = parsedJson['CARGO'];
+        String location = parsedJson['UNIDADE'];
+
+        userLocalData.setUser(username, position, location);
+
+        //SHARED PREFERENCES AQUI PARA SALVAR DADOS PRINCIPAIS DO USUARIO
+
         Get.closeAllSnackbars();
         Get.back();
         Get.toNamed('/MenuPage');
@@ -29,14 +43,24 @@ Future loginConnection(String user, String password) async {
       } else {
         Get.closeAllSnackbars();
         Get.back();
-        Get.snackbar("Nordeste Tubetes", "Login Incorreto");
+        showSnackBar(
+            message: 'Login incorreto',
+            title: 'Erro',
+            backgroundColor: Colors.red);
       }
     } else {
       Get.back();
-      Get.snackbar("Nordeste Tubetes", "Falha na comunicação com o servidor");
+      showSnackBar(
+          message: 'Falha ao conectar com o servidor',
+          title: 'Verifique sua conexão com a internet',
+          backgroundColor: Colors.red);
     }
   } catch (error) {
-    Get.snackbar("Nordeste Tubetes",
-        "Falha grave na execução do aplicativo. Tente reiniciar o mesmo.");
+    print(error);
+    return showSnackBar(
+      title: 'Falha ao conectar com o servidor',
+      message: 'Verifique sua conexão com a internet',
+      backgroundColor: Colors.red,
+    );
   }
 }

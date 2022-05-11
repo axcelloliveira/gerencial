@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class LastSentModel {
   String? data;
-  String? valorNfe;
+  var valorNfe;
   String? nomeCliente;
 
   LastSentModel({this.data, this.valorNfe, this.nomeCliente});

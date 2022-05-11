@@ -11,7 +11,7 @@ class HeaderLastSent extends StatelessWidget {
       children: const [
         Text('Cliente', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
         Text('Valor', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-        Text('Data de envio', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+        Text('Data', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
       ],
     );
   }

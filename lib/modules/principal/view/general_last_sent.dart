@@ -1,32 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:norteste_gerencial/modules/principal/controller/total_sent_controller.dart';
 import 'package:norteste_gerencial/modules/principal/view/header_last_sent.dart';
 import 'package:norteste_gerencial/modules/principal/view/last_sents_details.dart';
+import 'package:intl/intl.dart';
 
 class GeneralLastSent extends StatelessWidget {
-  const GeneralLastSent({Key? key}) : super(key: key);
+  GeneralLastSent({Key? key}) : super(key: key);
+  final TotalSentController controller = Get.put(TotalSentController());
 
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: deviceHeight / 2.4,
+      height: deviceHeight / 2.2,
       width: deviceWidth / 1.1,
       child: Card(
         child: Column(
-          children: const [
+          children: [
             ListTile(
-              title: Text('Últimos envios'),
-              subtitle: Text('Valor acumulado do mês: R\$ 162.120,00 '),
-              //trailing: Icon(Icons.),
+              title: const Text('Últimos envios'),
+              subtitle: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: GetBuilder<TotalSentController>(
+                  init: controller,
+                  builder: (value) => Text('Faturamento acumulado R\$ ' +
+                      NumberFormat.decimalPattern('pt').format(double.parse(
+                          controller.totalSent.replaceAll(',', '.')))),
+                  //trailing: Icon(Icons.),
+                ),
+              ),
             ),
             //  const Divider(color: Colors.black,),
-            HeaderLastSent(),
-            LastSentDetails(),
-            Padding(
-              padding: EdgeInsets.only(left: 250.0, top: 8),
-              child: Text('Ver mais...', style: TextStyle(color: Colors.blue),),
-            )
+            const HeaderLastSent(),
+            const LastSentDetails(),
+            const Padding(
+              padding: EdgeInsets.only(left: 250.0, top: 18),
+              child: Text(
+                'Ver mais...',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
           ],
         ),
       ),

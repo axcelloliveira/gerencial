@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             ),
             GetPage(
               name: '/GeneralLastSent',
-              page: () => const GeneralLastSent(),
+              page: () => GeneralLastSent(),
               //  binding: TopAppBarBindings(),
             ),
           ],

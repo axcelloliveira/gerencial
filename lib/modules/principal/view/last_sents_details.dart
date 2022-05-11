@@ -3,6 +3,7 @@ import 'package:norteste_gerencial/modules/principal/model/last_sent_model.dart'
 import 'package:norteste_gerencial/widgets/custom_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class LastSentDetails extends GetView<LastSentController> {
   const LastSentDetails({Key? key}) : super(key: key);
@@ -16,11 +17,12 @@ class LastSentDetails extends GetView<LastSentController> {
       child: controller.obx(
         (state) {
           return SizedBox(
-            height: deviceHeight / 4.5,
+            height: deviceHeight / 4.0,
             width: deviceWidth / 1.15,
             child: ListView.builder(
+
                 padding: const EdgeInsets.only(top: 6),
-                itemCount: 4,
+                itemCount: 5,
                 itemBuilder: (_, int index) {
                   final LastSentModel item = state[index];
                   return SizedBox(
@@ -31,13 +33,25 @@ class LastSentDetails extends GetView<LastSentController> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
-                            width: 120,
+                            width: 122,
                             height: 20,
                             child: Text(item.nomeCliente.toString(),
                                 overflow: TextOverflow.ellipsis)),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 0.0, right: 28),
-                          child: Text('850.542.121,00'),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0.0, right: 34),
+                          child: item.valorNfe != ''
+                              ? Text('R\$ ' +
+                                  NumberFormat.decimalPattern('pt').format(
+                                      double.parse(item.valorNfe
+                                          .toString()
+                                          .replaceAll(',', '.'))))
+                              : const Padding(
+                                padding: EdgeInsets.only(left: 16.0, right: 15.0),
+                                child: Text(
+                                    'NC',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                              ),
                         ),
                         Text(item.data.toString().substring(0, 10)),
                       ],

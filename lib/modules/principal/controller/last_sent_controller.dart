@@ -19,7 +19,6 @@ class LastSentController extends GetxController with StateMixin {
       final dados = await _httpRepository.findLastSentData();
       change(dados, status: RxStatus.success());
     } catch (e) {
-      print(e);
       change([], status: RxStatus.error('Erro ao buscar dados'));
     }
   }

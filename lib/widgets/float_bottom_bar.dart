@@ -14,7 +14,6 @@ class FloatBottomBar extends GetView<BottomAppBarController> {
           builder: (value)=> FloatingNavbar(
       onTap: (int val) {
         controller.selectScreen(val);
-        print(controller.selectedItem);
       },
       backgroundColor: Colors.white,
       selectedItemColor: Colors.white,
