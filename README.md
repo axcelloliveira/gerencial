@@ -5,5 +5,5 @@ no processo de tomada de decisão e de planejamento por parte dos gestores, alé
 
 ## Aplicação em Desenvolvimento
 
- O projeto está sendo desenvolvido em Dart de ponta a ponta, respeitando sempre as boas práticas de programação.
+ Projeto desenvolvido em Flutter e dart, ainda em desenvolvimento
 
