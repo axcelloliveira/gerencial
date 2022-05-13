@@ -4,7 +4,6 @@ import 'package:norteste_gerencial/modules/principal/controller/menu_principal_c
 class MenuPrincipalBindings implements Bindings {
   @override
   void dependencies() {
- //   Get.lazyPut(() => GiphyRepository());
     Get.lazyPut(() => MenuPrincipalController());
   }
 }

@@ -25,9 +25,19 @@ class GeneralLastSent extends StatelessWidget {
                 padding: const EdgeInsets.all(2.0),
                 child: GetBuilder<TotalSentController>(
                   init: controller,
-                  builder: (value) => Text('Faturamento acumulado R\$ ' +
-                      NumberFormat.decimalPattern('pt').format(double.parse(
-                          controller.totalSent.replaceAll(',', '.')))),
+                  builder: (value) => controller.totalSent != 'error'
+                      ? Text('Faturamento acumulado R\$ ' +
+                          NumberFormat.decimalPattern('pt').format(double.parse(
+                              controller.totalSent.replaceAll(',', '.'))))
+                      : GestureDetector(
+                          onTap: () {
+                            controller.returnTotal();
+                          },
+                          child: const Text(
+                            'Clique para recarregar',
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ),
                   //trailing: Icon(Icons.),
                 ),
               ),

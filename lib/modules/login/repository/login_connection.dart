@@ -22,16 +22,15 @@ Future loginConnection(String user, String password) async {
 
     if (resposta.statusCode == 200) {
       if (resposta.body != 'erro') {
-        UserLocalData userLocalData = UserLocalData();
-
         var parsedJson = jsonDecode(resposta.body)[0];
+        String id = parsedJson['CODIGO'];
         String username = parsedJson['NOME'];
         String position = parsedJson['CARGO'];
         String location = parsedJson['UNIDADE'];
 
-        userLocalData.setUser(username, position, location);
+        UserLocalData userLocalData = UserLocalData();
 
-        //SHARED PREFERENCES AQUI PARA SALVAR DADOS PRINCIPAIS DO USUARIO
+        await userLocalData.setUserData(id, username, position, location);
 
         Get.closeAllSnackbars();
         Get.back();
@@ -44,19 +43,21 @@ Future loginConnection(String user, String password) async {
         Get.closeAllSnackbars();
         Get.back();
         showSnackBar(
-            message: 'Login incorreto',
-            title: 'Erro',
-            backgroundColor: Colors.red);
+          message: 'Login incorreto',
+          title: 'Erro',
+          backgroundColor: Colors.red,
+        );
       }
     } else {
       Get.back();
       showSnackBar(
-          message: 'Falha ao conectar com o servidor',
-          title: 'Verifique sua conexão com a internet',
-          backgroundColor: Colors.red);
+        message: 'Falha ao conectar com o servidor',
+        title: 'Verifique sua conexão com a internet',
+        backgroundColor: Colors.red,
+      );
     }
   } catch (error) {
-    print(error);
+    Get.back();
     return showSnackBar(
       title: 'Falha ao conectar com o servidor',
       message: 'Verifique sua conexão com a internet',

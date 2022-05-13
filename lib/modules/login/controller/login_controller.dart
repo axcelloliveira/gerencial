@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class LoginController extends GetxController {
   var username = 0;
   late String verified;
@@ -11,8 +10,6 @@ class LoginController extends GetxController {
   late SharedPreferences login;
   late SharedPreferences access;
   var teste = true;
-
-  //METODOS
 
   void tryLogin(user, password) {
     tUser.update((val) {
@@ -39,6 +36,4 @@ class LoginController extends GetxController {
     login = await SharedPreferences.getInstance();
     login.setString('usuario', user);
   }
-
-
 }

@@ -82,11 +82,14 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     InputContainer(
+
                       child: TextField(
+
                         controller: tPassword,
                         cursorColor: kPrimaryColor,
                         obscureText: true,
                         decoration: const InputDecoration(
+                    //  suffixIcon: Icon(Icons.),
                           icon: Icon(
                             Icons.lock,
                             color: kPrimaryColor,
@@ -99,21 +102,20 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 9,
                     ),
-                    Obx(
-                      () => RoundedButtom(
+                   RoundedButtom(
                         sendData: () {
                           controller.tryLogin(
                               tUser.text.obs, tPassword.text.obs);
                         },
                         username: tUser.text,
-                        password: controller.tPassoword.toString(),
+                        password: tPassword.text,
                         title: 'LOGIN',
                         backGroundColor: kPrimaryColor,
                         borderColor: Colors.transparent,
                         textColor: Colors.white,
                         type: 'login',
                       ),
-                    ),
+
 
                     // BOTÃO DE LOGIN
                     const SizedBox(

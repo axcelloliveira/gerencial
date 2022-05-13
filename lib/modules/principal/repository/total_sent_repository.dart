@@ -1,7 +1,11 @@
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<String?> totalSentConnection() async {
-  var url = 'http://10.100.10.161:8083/eventos2/faturamentoMes';
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String port = prefs.getString('port')!;
+
+  var url = 'http://10.100.10.161:$port/eventos2/faturamentoMes';
 
   http.Response resposta;
   try {
@@ -19,5 +23,4 @@ Future<String?> totalSentConnection() async {
   } catch (error) {
     return 'error';
   }
-
 }

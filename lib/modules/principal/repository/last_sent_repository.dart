@@ -1,6 +1,7 @@
 import 'package:norteste_gerencial/modules/principal/model/last_sent_model.dart';
 import 'package:norteste_gerencial/repository/i_last_sent_repository.dart';
 import 'package:norteste_gerencial/repository/rest_client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class LastSentRepository implements ILastSentRepository {
@@ -10,8 +11,11 @@ class LastSentRepository implements ILastSentRepository {
 
   @override
   Future<List<LastSentModel>> findLastSentData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String port = prefs.getString('port')!;
+
     final response = await restClient.get(
-        ':8083/eventos2/ultimosRomaneios', decoder: (body) {
+        ':$port/eventos2/ultimosRomaneios', decoder: (body) {
       if (body is List) {
         return body
             .map<LastSentModel>((resp) => LastSentModel.fromMap(resp))

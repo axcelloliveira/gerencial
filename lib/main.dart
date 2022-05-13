@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/',
           page: () => const LoginPage(),
-
         ),
         GetPage(
           name: '/MenuPage',
@@ -57,6 +56,7 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
+
       ],
       debugShowCheckedModeBanner: false,
       title: 'Grupo Nordeste Gerencial',

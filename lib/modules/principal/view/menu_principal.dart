@@ -35,7 +35,7 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
           )
         ],
       ),
-      drawer:  CustomDrawer(),
+      drawer:  CustomDrawer(selectedPage: 'menuPage',),
       extendBody: true,
       bottomNavigationBar: const FloatBottomBar(),
       body: Responsive(
