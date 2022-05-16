@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/modules/principal/controller/total_sent_controller.dart';
-import 'package:norteste_gerencial/modules/principal/view/header_last_sent.dart';
-import 'package:norteste_gerencial/modules/principal/view/last_sents_details.dart';
+import 'package:norteste_gerencial/modules/principal/view/last_sent/header_last_sent.dart';
+import 'package:norteste_gerencial/modules/principal/view/last_sent/last_sents_details.dart';
 import 'package:intl/intl.dart';
 
 class GeneralLastSent extends StatelessWidget {
@@ -13,6 +13,8 @@ class GeneralLastSent extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
+    final formatCurrency =  NumberFormat.simpleCurrency(locale:'pt' );
+
     return SizedBox(
       height: deviceHeight / 2.2,
       width: deviceWidth / 1.1,
@@ -26,8 +28,8 @@ class GeneralLastSent extends StatelessWidget {
                 child: GetBuilder<TotalSentController>(
                   init: controller,
                   builder: (value) => controller.totalSent != 'error'
-                      ? Text('Faturamento acumulado R\$ ' +
-                          NumberFormat.decimalPattern('pt').format(double.parse(
+                      ? Text('Faturamento do mês:  ' +
+                      formatCurrency.format(double.parse(
                               controller.totalSent.replaceAll(',', '.'))))
                       : GestureDetector(
                           onTap: () {

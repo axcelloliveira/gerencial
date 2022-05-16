@@ -20,25 +20,35 @@ class AnimatedSearch extends StatelessWidget {
               // especificar o tipo como Controller
               init: MenuPrincipalController(), // inicializar o Controller
               builder: (value) => AnimatedContainer(
-                //color: Colors.white,
                 height: value.viewSearch ? 45 : 0,
-                width: value.viewSearch ? 200 : 0,
+                width: value.viewSearch ? 185 : 0,
                 padding: const EdgeInsets.symmetric(horizontal: 2),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
-                  //    color: Colors.brown
-                  // color: Colors.white,
                 ),
                 duration: const Duration(milliseconds: 500),
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 8.0, left: 8),
+                  padding: const EdgeInsets.only(right: 4.0, left: 4.0),
                   child: TextField(
+                    keyboardType: const TextInputType.numberWithOptions(),
                     decoration: InputDecoration(
+                      suffixIcon: GetBuilder<MenuPrincipalController>(
+                        builder: (value) => Visibility(
+                          visible: value.viewSearch,
+                          child: IconButton(
+                            onPressed: () {
+
+                            },
+                            icon: const Icon(Icons.search),
+                          ),
+                        ),
+                      ),
                       floatingLabelAlignment: FloatingLabelAlignment.start,
                       fillColor: Colors.white,
-                      enabled: value.selectedFilter != 'Filtrar por' ? true : false,
+                      enabled:
+                          value.selectedFilter != 'Filtrar por' ? true : false,
                       hintText: value.selectedFilter != 'Filtrar por'
-                          ? "Buscando por ${value.selectedFilter}..."
+                          ? "${value.selectedFilter}..."
                           : "Como deseja filtrar?",
                       border: InputBorder.none,
                     ),
@@ -52,7 +62,6 @@ class AnimatedSearch extends StatelessWidget {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 500),
                   height: 38,
-                  width: 115,
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
                   decoration: BoxDecoration(
                       border: Border.all(
@@ -67,9 +76,9 @@ class AnimatedSearch extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(value.selectedFilter.toString()),
                         ),
-                        //    value: dropdownValue,
                         items: <String>[
-                          'Pedidos',
+                          'Pedido - Interno',
+                          'Pedido - Cliente',
                           'Lote',
                           'Rastreio',
                         ].map<DropdownMenuItem<String>>((String value) {

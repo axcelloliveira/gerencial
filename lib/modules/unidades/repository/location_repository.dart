@@ -5,7 +5,7 @@ import 'package:norteste_gerencial/comuns/custom_snackbar.dart';
 class LocationRepository {
   Future<String> switchLocationConnection(String id, String location) async {
     var url =
-        'http://10.100.10.161:8083/eventos2/trocarUnidade?pUnidade=$location&pCodigo=$id';
+        'http://24.152.37.103:8083/eventos2/trocarUnidade?pUnidade=$location&pCodigo=$id';
     http.Response resposta;
     try {
       resposta =

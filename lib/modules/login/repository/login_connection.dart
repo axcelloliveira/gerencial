@@ -7,7 +7,7 @@ import '../../../comuns/custom_snackbar.dart';
 
 Future loginConnection(String user, String password) async {
   var url =
-      'http://10.100.10.161:8083/eventos2/loginNuvem?Usuario=$user&Senha=$password';
+      'http://24.152.37.103:8083/eventos2/loginNuvem?Usuario=$user&Senha=$password';
 
   http.Response resposta;
   try {

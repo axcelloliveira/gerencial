@@ -40,14 +40,16 @@ class _SplashPageState extends State<SplashPage> {
 
   void getPage() async {
     final prefs = await SharedPreferences.getInstance();
-    String username = prefs.getString('username')!;
+    String? username = prefs.getString('username');
     await Future.delayed(const Duration(seconds: 2));
-    if (username != '') {
+    if (username != null) {
       if (controller.hasFingerPrintLock.value) {
         controller.authenticateUser(const LoginPage());
       } else {
+        Get.offAll(() => const LoginPage());
       }
     } else {
+      Get.offAll(() => const LoginPage());
     }
   }
 }

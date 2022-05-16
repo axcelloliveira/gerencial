@@ -20,8 +20,10 @@ class MenuCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String valorCardPapel = NumberFormat.decimalPattern('pt')
-        .format(double.parse(valorPapel.replaceAll(',', '.')));
+    final formatCurrency = NumberFormat.simpleCurrency(locale: 'pt');
+
+    String valorCardPapel =
+        formatCurrency.format(double.parse(valorPapel.replaceAll(',', '.')));
     String pesoCardPapel = NumberFormat.decimalPattern('pt')
         .format(double.parse(pesoPapel.replaceAll(',', '.')));
     String pesoCardEstoque = NumberFormat.decimalPattern('pt')

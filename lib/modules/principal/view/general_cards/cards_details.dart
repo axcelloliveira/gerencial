@@ -69,7 +69,7 @@ class CardsDetails extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'R\$ $value',
+                             value!,
                             style: GoogleFonts.lato(
                               textStyle: const TextStyle(
                                   color: Colors.black, letterSpacing: .5),

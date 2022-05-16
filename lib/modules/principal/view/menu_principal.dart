@@ -5,13 +5,15 @@ import '../../../comuns/responsive.dart';
 import '../../../widgets/float_bottom_bar.dart';
 import '../controller/menu_principal_controller.dart';
 import 'general_cards/general_info_card.dart';
-import 'general_last_sent.dart';
+import 'last_sent/general_last_sent.dart';
 import 'animated_search.dart';
 
 class MenuPrincipal extends GetView<MenuPrincipalController> {
-  const MenuPrincipal({Key? key}) : super(key: key);
+ const  MenuPrincipal({Key? key}) : super(key: key);
+
 
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -20,7 +22,7 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
-          'Nordeste Tubetes',
+          'Nordeste Tubetes' ,
           style: TextStyle(color: Colors.black, fontSize: 16),
         ),
         actions: [
@@ -35,7 +37,9 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
           )
         ],
       ),
-      drawer:  CustomDrawer(selectedPage: 'menuPage',),
+      drawer: CustomDrawer(
+        selectedPage: 'menuPage',
+      ),
       extendBody: true,
       bottomNavigationBar: const FloatBottomBar(),
       body: Responsive(
@@ -50,7 +54,7 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
               const SizedBox(
                 height: 10,
               ),
-               GeneralLastSent(),
+              GeneralLastSent(),
               //LastSent(),
             ],
           ),

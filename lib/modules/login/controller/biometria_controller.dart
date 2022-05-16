@@ -64,14 +64,17 @@ class BiometriaController extends GetxController {
       } else {
         Get.offAll(() => loginPage);
         showSnackBar(
-            title: "Error",
-            message: "Autenticação cancelada",
+            title: "Validação biometrica cancelada",
+            message: "Faça login utilizando usuário e senha",
             backgroundColor: Colors.red);
       }
     } catch (e) {
-      Get.offAll(const LoginPage());
+      Get.offAll(() => loginPage);
       showSnackBar(
-          title: "Error", message: e.toString(), backgroundColor: Colors.red);
+        title: "A validação biometrica falhou",
+        message: 'Faça login utilizando usuário e senha',
+        backgroundColor: Colors.red,
+      );
     }
   }
 }

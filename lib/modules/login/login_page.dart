@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 9,
                     ),
-                   RoundedButtom(
+                   RoundedButton(
                         sendData: () {
                           controller.tryLogin(
                               tUser.text.obs, tPassword.text.obs);
@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    RoundedButtom(
+                    RoundedButton(
                       sendData: () {
 
                       },

@@ -4,8 +4,8 @@ import '../constants.dart';
 import '../modules/login/controller/login_controller.dart';
 import '../modules/login/repository/login_connection.dart';
 
-class RoundedButtom extends StatelessWidget {
-  const RoundedButtom(
+class RoundedButton extends StatelessWidget {
+  const RoundedButton(
       {Key? key,
       required this.title,
       required this.backGroundColor,
