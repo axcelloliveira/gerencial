@@ -1,31 +1,61 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MenuPrincipalController extends GetxController{
+import '../../dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
 
+class MenuPrincipalController extends GetxController {
   var viewSearch = false;
-  String? selectedFilter= 'Filtrar por';
+  String? selectedFilter = 'Filtrar por';
   var location = '';
-  @override
-  void onInit()async {
-    super.onInit();
 
+  @override
+  void onInit() async {
+    super.onInit();
+    await setLocale();
   }
 
-  setStateSearch(){
+  setStateSearch() {
     viewSearch = !viewSearch;
     update();
   }
-  setSelectedFilter(value){
+
+  setSelectedFilter(value) {
     selectedFilter = value;
     update();
   }
 
-  choosePage(String filter){
-  //  if(filter ){}
+  dataFilter(String filter, String data) {
+    switch (filter) {
+      case 'Pedido - Interno':
+        getPedidoInterno(data);
+        break;
+      case 'Pedido - Cliente':
+        break;
+      case 'Lote':
+        break;
+      case 'Rastreio':
+        break;
+    }
   }
 
-   setLocale() async{
+  getPedidoInterno(String data) {
+    Get.to(PedidoInternoPage());
+    //MOVER PARA A PAGINA DE PEDIDO INTERNO
+  }
+
+  getPedidoCliente(String data) {
+    //MOVER PARA A PAGINA DE PEDIDO DO CLIENTE
+  }
+
+  getLote(String data) {
+    //MOVER PARA A PAGINA DE LOTE
+  }
+
+  getRastreio(String data) {
+    //MOVER PARA A PAGINA DE RASTREIO
+  }
+
+  setLocale() async {
     final prefs = await SharedPreferences.getInstance();
     String location = prefs.getString('location')!;
     if (location == 'NT') {
@@ -39,9 +69,4 @@ class MenuPrincipalController extends GetxController{
       update();
     }
   }
-
-
-
-
-
 }

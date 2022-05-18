@@ -18,7 +18,7 @@ class LastSentDetails extends GetView<LastSentController> {
       child: controller.obx(
         (state) {
           return SizedBox(
-            height: deviceHeight / 4.0,
+            height: deviceHeight / 3.2,
             width: deviceWidth / 1.15,
             child: ListView.builder(
                 padding: const EdgeInsets.only(top: 6),

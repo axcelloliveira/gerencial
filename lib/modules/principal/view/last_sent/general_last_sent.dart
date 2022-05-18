@@ -13,10 +13,10 @@ class GeneralLastSent extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
-    final formatCurrency =  NumberFormat.simpleCurrency(locale:'pt' );
+    final formatCurrency = NumberFormat.simpleCurrency(locale: 'pt');
 
     return SizedBox(
-      height: deviceHeight / 2.2,
+      height: deviceHeight / 1.9,
       width: deviceWidth / 1.1,
       child: Card(
         child: Column(
@@ -29,7 +29,7 @@ class GeneralLastSent extends StatelessWidget {
                   init: controller,
                   builder: (value) => controller.totalSent != 'error'
                       ? Text('Faturamento do mês:  ' +
-                      formatCurrency.format(double.parse(
+                          formatCurrency.format(double.parse(
                               controller.totalSent.replaceAll(',', '.'))))
                       : GestureDetector(
                           onTap: () {
@@ -48,7 +48,7 @@ class GeneralLastSent extends StatelessWidget {
             const HeaderLastSent(),
             const LastSentDetails(),
             const Padding(
-              padding: EdgeInsets.only(left: 250.0, top: 18),
+              padding: EdgeInsets.only(left: 250.0, top: 12),
               child: Text(
                 'Ver mais...',
                 style: TextStyle(color: Colors.blue),

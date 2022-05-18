@@ -37,7 +37,8 @@ class AnimatedSearch extends StatelessWidget {
                           visible: value.viewSearch,
                           child: IconButton(
                             onPressed: () {
-
+                              value.dataFilter(
+                                  value.selectedFilter.toString(), 'teste');
                             },
                             icon: const Icon(Icons.search),
                           ),
