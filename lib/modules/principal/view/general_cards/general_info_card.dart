@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:norteste_gerencial/modules/principal/controller/top_app_bar_controller.dart';
 import 'package:norteste_gerencial/modules/principal/model/card_data_model.dart';
 import 'package:norteste_gerencial/modules/principal/view/general_cards/menu_card.dart';
-import 'package:shimmer/shimmer.dart';
+import '../../../../widgets/custom_loading.dart';
 
 class GeneralInfoCard extends GetView<TopAppBarController> {
   const GeneralInfoCard({Key? key}) : super(key: key);
@@ -48,30 +48,7 @@ class GeneralInfoCard extends GetView<TopAppBarController> {
             ),
           );
         },
-        onLoading: loading(context),
-      ),
-    );
-  }
-
-  loading(BuildContext context) {
-    return SizedBox(
-      height: 135,
-      width: MediaQuery.of(context).size.width,
-      child: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (context, index) {
-            return Card(
-              elevation: 1.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const SizedBox(height: 30),
-            );
-          },
-        ),
+        onLoading: const CustomLoading(),
       ),
     );
   }

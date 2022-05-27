@@ -4,12 +4,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:norteste_gerencial/bindings/general_bindings.dart';
+import 'package:norteste_gerencial/modules/dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
 import 'package:norteste_gerencial/modules/login/login_page.dart';
 import 'package:norteste_gerencial/modules/principal/view/last_sent/general_last_sent.dart';
 import 'package:norteste_gerencial/modules/principal/view/menu_principal.dart';
 import 'package:norteste_gerencial/modules/splash/splash_page.dart';
 import 'package:norteste_gerencial/modules/unidades/view/location_page.dart';
 import 'constants.dart';
+import 'modules/dados_filtrados/pedido_interno/bindings/filter_data_bindings.dart';
 import 'modules/principal/bindings/top_app_bar_bindings.dart';
 import 'modules/principal/view/general_cards/general_info_card.dart';
 
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/MenuPage',
-          page: () =>  MenuPrincipal(),
+          page: () =>  const MenuPrincipal(),
           binding: TopAppBarBindings(),
           children: [
             GetPage(
@@ -60,6 +62,11 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/locationPage',
           page: () =>  LocationPage(),
+        ),
+        GetPage(
+          binding: FilterDataBindings(),
+          name: '/filter',
+              page: ()=> const PedidoInternoPage(),
         ),
       ],
       debugShowCheckedModeBanner: false,

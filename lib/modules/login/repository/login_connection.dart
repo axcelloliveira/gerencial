@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/local_data/user_local_data.dart';
 import '../../../comuns/custom_snackbar.dart';
+import 'dart:developer' as developer;
+
 
 Future loginConnection(String user, String password) async {
   var url =
@@ -58,6 +60,7 @@ Future loginConnection(String user, String password) async {
     }
   } catch (error) {
     Get.back();
+    developer.log(error.toString());
     return showSnackBar(
       title: 'Falha ao conectar com o servidor',
       message: 'Verifique sua conexão com a internet',

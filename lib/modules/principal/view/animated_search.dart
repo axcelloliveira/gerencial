@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/menu_principal_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AnimatedSearch extends StatelessWidget {
   AnimatedSearch({Key? key}) : super(key: key);
   final MenuPrincipalController controller = Get.put(MenuPrincipalController());
+  final TextEditingController data = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +32,31 @@ class AnimatedSearch extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 4.0, left: 4.0),
                   child: TextField(
-                    keyboardType: const TextInputType.numberWithOptions(),
+                    controller: data,
                     decoration: InputDecoration(
                       suffixIcon: GetBuilder<MenuPrincipalController>(
                         builder: (value) => Visibility(
                           visible: value.viewSearch,
                           child: IconButton(
-                            onPressed: () {
-                              value.dataFilter(
-                                  value.selectedFilter.toString(), 'teste');
+                            onPressed: () async {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.setString('filter', data.text);
+
+                              if (data.text != '') {
+                                if (value.selectedFilter ==
+                                    'Pedido - Interno') {
+                                  await prefs.setString(
+                                      'request_type', 'interno');
+                                } else if (value.selectedFilter ==
+                                    'Pedido - Cliente') {
+                                  await prefs.setString(
+                                      'request_type', 'cliente');
+                                }
+
+                                value.dataFilter(
+                                    value.selectedFilter.toString());
+                              }
                             },
                             icon: const Icon(Icons.search),
                           ),

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
 
 class MenuPrincipalController extends GetxController {
   var viewSearch = false;
@@ -24,10 +23,10 @@ class MenuPrincipalController extends GetxController {
     update();
   }
 
-  dataFilter(String filter, String data) {
+  dataFilter(String filter) {
     switch (filter) {
       case 'Pedido - Interno':
-        getPedidoInterno(data);
+        getPedidoInterno();
         break;
       case 'Pedido - Cliente':
         break;
@@ -38,12 +37,13 @@ class MenuPrincipalController extends GetxController {
     }
   }
 
-  getPedidoInterno(String data) {
-    Get.to(PedidoInternoPage());
+  getPedidoInterno() {
+
+    Get.toNamed('/filter');
     //MOVER PARA A PAGINA DE PEDIDO INTERNO
   }
 
-  getPedidoCliente(String data) {
+  getPedidoCliente() {
     //MOVER PARA A PAGINA DE PEDIDO DO CLIENTE
   }
 
@@ -51,7 +51,7 @@ class MenuPrincipalController extends GetxController {
     //MOVER PARA A PAGINA DE LOTE
   }
 
-  getRastreio(String data) {
+  getRastreio() {
     //MOVER PARA A PAGINA DE RASTREIO
   }
 
