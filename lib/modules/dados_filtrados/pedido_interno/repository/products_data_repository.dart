@@ -12,9 +12,17 @@ class ProductsDataRepository implements IProductsDataRepository {
   Future<List<ProductsDataModel>> findAllData(String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String port = prefs.getString('port')!;
+    String type = prefs.getString('request_type')!;
+    String? url;
+    if (type == '') {
+    } else if (type == 'interno') {
+      url = ':$port/eventos2/listaProdutosPedido?pPedido=$data';
+    } else if (type == 'cliente') {
+      url = ':$port/eventos2/listaProdutosCliente?pPedido=$data';
+    }
 
     final response =
-    await restClient.get(':$port/eventos2/listaProdutosPedido?pPedido=$data', decoder: (body) {
+    await restClient.get(url!, decoder: (body) {
       if (body is List) {
         return body
             .map<ProductsDataModel>((resp) => ProductsDataModel.fromMap(resp))

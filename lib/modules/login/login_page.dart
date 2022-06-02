@@ -76,25 +76,22 @@ class _LoginPageState extends State<LoginPage> {
                             Icons.email,
                             color: kPrimaryColor,
                           ),
-                          hintText: password,
+                          hintText: user,
                           border: InputBorder.none,
                         ),
                       ),
                     ),
                     InputContainer(
-
                       child: TextField(
-
                         controller: tPassword,
                         cursorColor: kPrimaryColor,
                         obscureText: true,
                         decoration: const InputDecoration(
-                    //  suffixIcon: Icon(Icons.),
                           icon: Icon(
                             Icons.lock,
                             color: kPrimaryColor,
                           ),
-                          hintText: user,
+                          hintText: password,
                           border: InputBorder.none,
                         ),
                       ),
@@ -102,29 +99,23 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 9,
                     ),
-                   RoundedButton(
-                        sendData: () {
-                          controller.tryLogin(
-                              tUser.text.obs, tPassword.text.obs);
-                        },
-                        username: tUser.text,
-                        password: tPassword.text,
-                        title: 'LOGIN',
-                        backGroundColor: kPrimaryColor,
-                        borderColor: Colors.transparent,
-                        textColor: Colors.white,
-                        type: 'login',
-                      ),
-
-
-                    // BOTÃO DE LOGIN
+                    RoundedButton(
+                      sendData: () {
+                        controller.tryLogin(tUser.text.obs, tPassword.text.obs);
+                      },
+                      username: tUser.text,
+                      password: tPassword.text,
+                      title: 'LOGIN',
+                      backGroundColor: kPrimaryColor,
+                      borderColor: Colors.transparent,
+                      textColor: Colors.white,
+                      type: 'login',
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
                     RoundedButton(
-                      sendData: () {
-
-                      },
+                      sendData: () {},
                       username: '',
                       password: '',
                       title: 'CRIAR CONTA',
@@ -133,8 +124,6 @@ class _LoginPageState extends State<LoginPage> {
                       textColor: kPrimaryColor,
                       type: 'register',
                     ),
-
-                    // BOTÃO DE LOGIN E CRIAR CONTA
                   ],
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,6 +7,7 @@ class MenuPrincipalController extends GetxController {
   var viewSearch = false;
   String? selectedFilter = 'Filtrar por';
   var location = '';
+  TextEditingController textFilter = TextEditingController();
 
   @override
   void onInit() async {
@@ -15,6 +17,7 @@ class MenuPrincipalController extends GetxController {
 
   setStateSearch() {
     viewSearch = !viewSearch;
+    textFilter.text = '';
     update();
   }
 
@@ -29,21 +32,22 @@ class MenuPrincipalController extends GetxController {
         getPedidoInterno();
         break;
       case 'Pedido - Cliente':
+        getPedidoCliente();
         break;
       case 'Lote':
         break;
-      case 'Rastreio':
+      case 'Rastreio': getRastreio();
         break;
     }
   }
 
   getPedidoInterno() {
-
-    Get.toNamed('/filter');
+    Get.offAndToNamed('/filter');
     //MOVER PARA A PAGINA DE PEDIDO INTERNO
   }
 
   getPedidoCliente() {
+    Get.offAndToNamed('/filter');
     //MOVER PARA A PAGINA DE PEDIDO DO CLIENTE
   }
 
@@ -52,6 +56,7 @@ class MenuPrincipalController extends GetxController {
   }
 
   getRastreio() {
+    Get.offAndToNamed('rastreabilidadePage');
     //MOVER PARA A PAGINA DE RASTREIO
   }
 

@@ -18,7 +18,7 @@ class DetailsDataRepository implements IDetailsDataRepository {
     } else if (type == 'interno') {
       url = ':$port/eventos2/detalhesPedidoInterno?pPedido=$data';
     } else if (type == 'cliente') {
-      url = ':$port/eventos2/detalhesPedidoInterno?pPedido=$data';
+      url = ':$port/eventos2/detalhesPedidoCliente?pPedido=$data';
     }
 
     final response = await restClient.get(url!, decoder: (body) {

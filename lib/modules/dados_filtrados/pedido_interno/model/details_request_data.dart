@@ -32,7 +32,6 @@ class DetailsDataModel {
       pedido: map['PEDIDO'] ?? '',
       pedidoCliente: map['PEDIDO_CLIENTE'] ?? '',
       codigo: map['CODIGO'] ?? '',
-
     );
   }
 
@@ -41,3 +40,4 @@ class DetailsDataModel {
   factory DetailsDataModel.fromJson(String source) =>
       DetailsDataModel.fromMap(json.decode(source));
 }
+

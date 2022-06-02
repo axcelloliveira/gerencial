@@ -12,9 +12,16 @@ class ChartDataRepository implements IChartDataRepository {
   Future<List<ChartDataModel>> findAllData(String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String port = prefs.getString('port')!;
-
+    String type = prefs.getString('request_type')!;
+    String? url;
+    if (type == '') {
+    } else if (type == 'interno') {
+      url = ':$port/eventos2/graficoPedidoInterno?pPedido=$data';
+    } else if (type == 'cliente') {
+      url = ':$port/eventos2/graficoPedidoCliente?pPedido=$data';
+    }
     final response =
-        await restClient.get(':$port/eventos2/graficoPedidoInterno?pPedido=$data', decoder: (body) {
+        await restClient.get(url!, decoder: (body) {
       if (body is List) {
         return body
             .map<ChartDataModel>((resp) => ChartDataModel.fromMap(resp))

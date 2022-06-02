@@ -32,7 +32,7 @@ class AnimatedSearch extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 4.0, left: 4.0),
                   child: TextField(
-                    controller: data,
+                    controller: controller.textFilter,
                     decoration: InputDecoration(
                       suffixIcon: GetBuilder<MenuPrincipalController>(
                         builder: (value) => Visibility(
@@ -41,9 +41,10 @@ class AnimatedSearch extends StatelessWidget {
                             onPressed: () async {
                               SharedPreferences prefs =
                                   await SharedPreferences.getInstance();
-                              await prefs.setString('filter', data.text);
+                              await prefs.setString(
+                                  'filter', controller.textFilter.text);
 
-                              if (data.text != '') {
+                              if (controller.textFilter.text != '') {
                                 if (value.selectedFilter ==
                                     'Pedido - Interno') {
                                   await prefs.setString(
@@ -91,6 +92,7 @@ class AnimatedSearch extends StatelessWidget {
                   child: Visibility(
                     visible: value.viewSearch,
                     child: DropdownButton<String>(
+                      onTap: (){controller.textFilter.text = '';},
                         hint: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(value.selectedFilter.toString()),
