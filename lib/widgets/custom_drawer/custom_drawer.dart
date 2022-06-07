@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/controllers/custom_drawer_controller.dart';
-import 'package:norteste_gerencial/modules/unidades/view/location_page.dart';
-import '../../modules/calendar/view/calendar_page.dart';
 import 'custom_drawer_header.dart';
 import 'custom_drawer_item.dart';
 

@@ -55,7 +55,7 @@ class GeneralLastSent extends StatelessWidget {
                 Get.toNamed('/totalSentsPage');
               },
               child: const Padding(
-                padding: EdgeInsets.only(left: 250.0, top: 12),
+                padding: EdgeInsets.only(left: 270.0, top: 12),
                 child: Text(
                   'Ver mais...',
                   style: TextStyle(color: Colors.blue),

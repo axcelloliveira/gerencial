@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/repository/i_filter_total_sent.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,6 +7,7 @@ class FilterTotalSentController extends GetxController with StateMixin {
   final IFilterTotalSent _httpRepository;
   var filterData;
   var filterSelected = 30;
+  TextEditingController filterTextController = TextEditingController();
 
   FilterTotalSentController(this._httpRepository);
 
@@ -16,8 +18,8 @@ class FilterTotalSentController extends GetxController with StateMixin {
     findTotalSent();
   }
 
-
-  selectFilter(int filter) async {
+   selectFilter(int filter) async {
+    filterTextController.text = '';
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('intervalo', filter);
     filterSelected = filter;
@@ -29,22 +31,37 @@ class FilterTotalSentController extends GetxController with StateMixin {
     change([], status: RxStatus.loading());
     try {
       final dados = await _httpRepository.findTotalSentData();
-
       filterData = dados;
       change(dados, status: RxStatus.success());
     } catch (e) {
       change([], status: RxStatus.error('Erro ao buscar dados'));
     }
   }
-  filterTotalSent(filter){
+
+  filterTotalSent(filter) {
     change([], status: RxStatus.loading());
-    try{
-     final data =  filterData.where((element) =>
-          element.nomeCliente.toString().toLowerCase().contains(filter)).toList();
+    try {
+      final data = filterData
+          .where((element) =>
+              element.nomeCliente.toString().toLowerCase().contains(filter))
+          .toList();
       change(data, status: RxStatus.success());
-    }catch(e){
+    } catch (e) {
       change([], status: RxStatus.error('Falha'));
     }
-
   }
+
+  // descOrderTotalSent() {
+  //   change([], status: RxStatus.loading());
+  //   try {
+  //     final data = filterData
+  //         .where((element) =>
+  //         element.nomeCliente.toString().toLowerCase().contains().obs.)
+  //         .toList();
+  //     change(data, status: RxStatus.success());
+  //   } catch (e) {
+  //     change([], status: RxStatus.error('Falha'));
+  //   }
+  // }
+
 }

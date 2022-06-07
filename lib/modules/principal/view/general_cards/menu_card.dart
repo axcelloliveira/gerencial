@@ -45,7 +45,7 @@ class MenuCard extends StatelessWidget {
           width: 10,
         ),
         CardsDetails(
-          title: 'Produção Diária',
+          title: 'Produção - Dia Anterior',
           value: '',
           weight: cardProdDiaria,
           viewValue: false,

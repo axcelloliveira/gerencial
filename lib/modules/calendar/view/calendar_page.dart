@@ -92,9 +92,6 @@ class CalendarPage extends StatelessWidget {
     var jsonData = json.decode(data.body);
     final List<Meeting> appointmentData = [];
     for (var data in jsonData) {
-      var teste = (data['DATA_ENTREGA']);
-      var a = teste.substring(0, 10);
-      var b = DateTime.tryParse(a);
       Color? colors;
       var formatter = DateFormat('yyyy');
       var formatter2 = DateFormat('dd');
