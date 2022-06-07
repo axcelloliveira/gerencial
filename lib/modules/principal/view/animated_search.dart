@@ -92,7 +92,9 @@ class AnimatedSearch extends StatelessWidget {
                   child: Visibility(
                     visible: value.viewSearch,
                     child: DropdownButton<String>(
-                      onTap: (){controller.textFilter.text = '';},
+                        onTap: () {
+                          controller.textFilter.text = '';
+                        },
                         hint: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(value.selectedFilter.toString()),

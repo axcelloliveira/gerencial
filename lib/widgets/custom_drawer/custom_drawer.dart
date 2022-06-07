@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:norteste_gerencial/controllers/custom_drawer_controller.dart';
 import 'package:norteste_gerencial/modules/unidades/view/location_page.dart';
+import '../../modules/calendar/view/calendar_page.dart';
 import 'custom_drawer_header.dart';
 import 'custom_drawer_item.dart';
 
@@ -32,12 +33,15 @@ class CustomDrawer extends StatelessWidget {
           CustomDrawerItem(
             icon: Icons.auto_awesome_motion_outlined,
             title: 'Mapeados a produzir',
-            onTap: () {},
+            onTap: () {
+            },
           ),
           CustomDrawerItem(
             icon: Icons.event_note,
             title: 'Quadro de Entregas',
-            onTap: () {},
+            onTap: () {
+              Get.offAndToNamed('/calendarPage');
+            },
           ),
           const Divider(),
           CustomDrawerItem(
@@ -50,12 +54,9 @@ class CustomDrawer extends StatelessWidget {
             title: 'Trocar Unidade',
             onTap: () {
               if(selectedPage == 'locationPage'){
-
               }else {
-
-                Get.off(() => LocationPage());
+                Get.offAndToNamed('/locationPage');
               }
-
             },
           ),
           const Divider(),
@@ -69,7 +70,6 @@ class CustomDrawer extends StatelessWidget {
           ),
         ],
       ),
-      //  backgroundColor: Colors.black,
     );
   }
 }

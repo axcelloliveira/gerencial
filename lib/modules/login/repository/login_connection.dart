@@ -36,7 +36,7 @@ Future loginConnection(String user, String password) async {
 
         Get.closeAllSnackbars();
         Get.back();
-        Get.toNamed('/MenuPage');
+        Get.offAndToNamed('/MenuPage');
         showSnackBar(
             message: 'Você foi autenticado com sucesso',
             title: 'Sucesso',

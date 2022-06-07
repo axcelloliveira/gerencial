@@ -11,7 +11,7 @@ class PedidoInternoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop:()async{
-        Get.offAndToNamed('/MenuPage');
+        Get.offAllNamed('/MenuPage');
         return true;
       },
       child: Scaffold(

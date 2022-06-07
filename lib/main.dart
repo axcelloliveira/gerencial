@@ -1,21 +1,26 @@
+import 'package:norteste_gerencial/modules/dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
+import 'package:norteste_gerencial/modules/dados_filtrados/rastreio/view/rastreabilidade_page.dart';
+import 'package:norteste_gerencial/modules/principal/view/last_sent/general_last_sent.dart';
+import 'modules/dados_filtrados/pedido_interno/bindings/filter_data_bindings.dart';
+import 'package:norteste_gerencial/modules/principal/view/menu_principal.dart';
+import 'package:norteste_gerencial/modules/unidades/view/location_page.dart';
+import 'modules/dados_filtrados/rastreio/bindings/rastreio_bindings.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
+import 'modules/principal/view/general_cards/general_info_card.dart';
+import 'package:norteste_gerencial/modules/splash/splash_page.dart';
+import 'package:norteste_gerencial/bindings/general_bindings.dart';
+import 'package:norteste_gerencial/modules/login/login_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'modules/principal/bindings/top_app_bar_bindings.dart';
+import 'modules/calendar/view/calendar_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:norteste_gerencial/bindings/general_bindings.dart';
-import 'package:norteste_gerencial/modules/dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
-import 'package:norteste_gerencial/modules/dados_filtrados/rastreio/view/rastreabilidade_page.dart';
-import 'package:norteste_gerencial/modules/login/login_page.dart';
-import 'package:norteste_gerencial/modules/principal/view/last_sent/general_last_sent.dart';
-import 'package:norteste_gerencial/modules/principal/view/menu_principal.dart';
-import 'package:norteste_gerencial/modules/splash/splash_page.dart';
-import 'package:norteste_gerencial/modules/unidades/view/location_page.dart';
 import 'constants.dart';
-import 'modules/dados_filtrados/pedido_interno/bindings/filter_data_bindings.dart';
-import 'modules/dados_filtrados/rastreio/bindings/rastreio_bindings.dart';
-import 'modules/principal/bindings/top_app_bar_bindings.dart';
-import 'modules/principal/view/general_cards/general_info_card.dart';
+import 'modules/total_sent/bindings/filter_total_sent_bindings.dart';
+import 'modules/total_sent/view/total_sent_page.dart';
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
@@ -37,7 +42,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
       initialBinding: GeneralBindings(),
       getPages: [
         GetPage(
@@ -46,7 +50,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/MenuPage',
-          page: () =>  const MenuPrincipal(),
+          page: () => const MenuPrincipal(),
           binding: TopAppBarBindings(),
           children: [
             GetPage(
@@ -63,26 +67,45 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/locationPage',
-          page: () =>  LocationPage(),
+          page: () => LocationPage(),
         ),
         GetPage(
           binding: FilterDataBindings(),
           name: '/filter',
-              page: ()=> const PedidoInternoPage(),
+          page: () => const PedidoInternoPage(),
         ),
         GetPage(
           binding: RastreioBindings(),
           name: '/rastreabilidadePage',
-          page: ()=> const RastreabilidadePage(),
+          page: () => const RastreabilidadePage(),
+        ),
+        GetPage(
+          name: '/calendarPage',
+          page: () => CalendarPage(),
+        ),
+        GetPage(
+          binding: FilterTotalSentBindings(),
+          name: '/totalSentsPage',
+          page: () =>  TotalSentPage(),
         ),
       ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        SfGlobalLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('pt'),
+      ],
+      locale: const Locale('pt'),
       debugShowCheckedModeBanner: false,
       title: 'Grupo Nordeste Gerencial',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
       ),
-          home: const SplashPage(),
+      home: const SplashPage(),
     );
   }
 }

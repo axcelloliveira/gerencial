@@ -96,13 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 9,
-                    ),
+                    const SizedBox(height: 9),
                     RoundedButton(
-                      sendData: () {
-                        controller.tryLogin(tUser.text.obs, tPassword.text.obs);
-                      },
+                      sendData: () => controller.tryLogin(
+                          tUser.text.obs, tPassword.text.obs),
                       username: tUser.text,
                       password: tPassword.text,
                       title: 'LOGIN',
@@ -111,19 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                       textColor: Colors.white,
                       type: 'login',
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    RoundedButton(
-                      sendData: () {},
-                      username: '',
-                      password: '',
-                      title: 'CRIAR CONTA',
-                      backGroundColor: kBackgroundColor,
-                      borderColor: kPrimaryColor,
-                      textColor: kPrimaryColor,
-                      type: 'register',
-                    ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),

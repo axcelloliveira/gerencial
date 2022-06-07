@@ -47,7 +47,7 @@ class MenuPrincipal extends GetView<MenuPrincipalController> {
           child: Column(
             children: [
               AnimatedSearch(),
-              const SizedBox(height: 25),
+              const SizedBox(height: 10),
               const GeneralInfoCard(),
               const SizedBox(height: 10),
               GeneralLastSent(),

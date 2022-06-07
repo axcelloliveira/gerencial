@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:norteste_gerencial/modules/principal/controller/total_sent_controller.dart';
 import 'package:norteste_gerencial/modules/principal/view/last_sent/header_last_sent.dart';
 import 'package:norteste_gerencial/modules/principal/view/last_sent/last_sents_details.dart';
@@ -47,11 +48,18 @@ class GeneralLastSent extends StatelessWidget {
             //  const Divider(color: Colors.black,),
             const HeaderLastSent(),
             const LastSentDetails(),
-            const Padding(
-              padding: EdgeInsets.only(left: 250.0, top: 12),
-              child: Text(
-                'Ver mais...',
-                style: TextStyle(color: Colors.blue),
+            GestureDetector(
+              onTap: ()async{
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setInt('intervalo', 30);
+                Get.toNamed('/totalSentsPage');
+              },
+              child: const Padding(
+                padding: EdgeInsets.only(left: 250.0, top: 12),
+                child: Text(
+                  'Ver mais...',
+                  style: TextStyle(color: Colors.blue),
+                ),
               ),
             ),
           ],

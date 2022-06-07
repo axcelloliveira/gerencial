@@ -12,7 +12,7 @@ class LastSentDetails extends GetView<LastSentController> {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
-    final formatCurrency =  NumberFormat.simpleCurrency(locale:'pt' );
+    final formatCurrency = NumberFormat.simpleCurrency(locale: 'pt');
     return Padding(
       padding: const EdgeInsets.only(left: 0.0, top: 10),
       child: controller.obx(
@@ -33,17 +33,20 @@ class LastSentDetails extends GetView<LastSentController> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
-                            width: 122,
-                            height: 20,
-                            child: Text(item.nomeCliente.toString(),
-                                overflow: TextOverflow.ellipsis)),
+                          width: 122,
+                          height: 20,
+                          child: Text(
+                            item.nomeCliente.toString(),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, right: 34),
                           child: item.valorNfe != ''
-                              ? Text(formatCurrency.format(
-                                      double.parse(item.valorNfe
-                                          .toString()
-                                          .replaceAll(',', '.'))))
+                              ? Text(formatCurrency.format(double.parse(item
+                                  .valorNfe
+                                  .toString()
+                                  .replaceAll(',', '.'))))
                               : const Padding(
                                   padding:
                                       EdgeInsets.only(left: 16.0, right: 15.0),
