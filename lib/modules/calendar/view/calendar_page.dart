@@ -15,8 +15,8 @@ class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: ()async{
-        Get.offAndToNamed('/MenuPage');
+      onWillPop: () async {
+        Get.offAllNamed('/MenuPage');
         return true;
       },
       child: Scaffold(
@@ -27,11 +27,9 @@ class CalendarPage extends StatelessWidget {
             var formatter = DateFormat('yyyy');
             var formatter2 = DateFormat('dd');
             var formatter3 = DateFormat('MM');
-
             String formattedDate = formatter.format(now);
             String formattedDate2 = formatter2.format(now);
             String formattedDate3 = formatter3.format(now);
-
             if (snapshot.data != null) {
               return SafeArea(
                 child: SfCalendar(
@@ -51,10 +49,9 @@ class CalendarPage extends StatelessWidget {
                   timeSlotViewSettings: const TimeSlotViewSettings(
                       timeInterval: Duration(minutes: 30), timeFormat: 'hh:mm'),
                   appointmentTextStyle: const TextStyle(
-                      //  fontSize: 22,
-                      color: Colors.white,
-                      // letterSpacing: 5,
-                      fontWeight: FontWeight.w500),
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
                   appointmentTimeTextFormat: 'HH:mm',
                   initialDisplayDate: DateTime(int.parse(formattedDate),
                       int.parse(formattedDate3), int.parse(formattedDate2)),
@@ -133,7 +130,6 @@ class CalendarPage extends StatelessWidget {
         background: colors!,
         notes: data['COD_CABECA'],
       );
-
       appointmentData.add(meetingData);
     }
     return appointmentData;
@@ -170,5 +166,3 @@ class MeetingDataSource extends CalendarDataSource {
     return appointments![index].notes;
   }
 }
-
-

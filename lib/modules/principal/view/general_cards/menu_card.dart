@@ -32,6 +32,11 @@ class MenuCard extends StatelessWidget {
         .format(double.parse(prodDiaria.replaceAll(',', '.')));
     String cardProdAcumulada = NumberFormat.decimalPattern('pt')
         .format(double.parse(prodAcumulada.replaceAll(',', '.')));
+    var tag = Localizations.maybeLocaleOf(context)?.toLanguageTag();
+
+    DateTime now = DateTime.now().add(const Duration(days: -1));
+    String formattedDate = DateFormat.MMMMd(tag).format(now);
+    String date = DateFormat.MMMM(tag).format(DateTime.now());
 
     return Row(
       children: [
@@ -45,13 +50,13 @@ class MenuCard extends StatelessWidget {
           width: 10,
         ),
         CardsDetails(
-          title: 'Produção - Dia Anterior',
+          title: 'Produção diária: $formattedDate',
           value: '',
           weight: cardProdDiaria,
           viewValue: false,
         ),
         CardsDetails(
-          title: 'Produção Acumulada',
+          title: 'Produção acumulada: ${date.toCapitalized()}',
           value: '',
           weight: cardProdAcumulada,
           viewValue: false,
@@ -65,4 +70,14 @@ class MenuCard extends StatelessWidget {
       ],
     );
   }
+}
+
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
+
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
 }

@@ -37,9 +37,11 @@ class TabGeral extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "PRODUTO ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                const Flexible(
+                  child: Text(
+                    "PRODUTO ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Flexible(child: Text(produto!)),
               ],
