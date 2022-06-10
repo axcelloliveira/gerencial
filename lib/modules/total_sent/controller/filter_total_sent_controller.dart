@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:norteste_gerencial/modules/total_sent/model/filter_total_sent_model.dart';
 import 'package:norteste_gerencial/repository/i_filter_total_sent.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

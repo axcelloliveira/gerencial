@@ -1,6 +1,7 @@
 import 'package:norteste_gerencial/modules/dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
 import 'package:norteste_gerencial/modules/dados_filtrados/rastreio/view/rastreabilidade_page.dart';
 import 'package:norteste_gerencial/modules/principal/view/last_sent/general_last_sent.dart';
+import 'modules/dados_filtrados/lote/view/lote_filter_page.dart';
 import 'modules/dados_filtrados/pedido_interno/bindings/filter_data_bindings.dart';
 import 'package:norteste_gerencial/modules/principal/view/menu_principal.dart';
 import 'package:norteste_gerencial/modules/unidades/view/location_page.dart';
@@ -88,6 +89,10 @@ class MyApp extends StatelessWidget {
           name: '/totalSentsPage',
           page: () =>  TotalSentPage(),
         ),
+        GetPage(
+          name: '/loteFilterPage',
+          page: ()=> const LoteFilterPage(),
+    ),
       ],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

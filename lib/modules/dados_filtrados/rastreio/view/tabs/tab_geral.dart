@@ -67,8 +67,10 @@ class TabGeral extends StatelessWidget {
                     ? Text(numeroNfe!)
                     : const Text(
                         'Ainda não faturado',
-                        style: TextStyle(color: Colors.red),
-                      )
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
               ],
             ),
           ),

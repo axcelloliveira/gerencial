@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:norteste_gerencial/comuns/format_string.dart';
 import 'package:norteste_gerencial/modules/principal/view/general_cards/cards_details.dart';
 
 class MenuCard extends StatelessWidget {
@@ -46,9 +47,7 @@ class MenuCard extends StatelessWidget {
           weight: pesoCardPapel,
           viewValue: true,
         ),
-        const SizedBox(
-          width: 10,
-        ),
+        const SizedBox(width: 10),
         CardsDetails(
           title: 'Produção diária: $formattedDate',
           value: '',
@@ -70,14 +69,4 @@ class MenuCard extends StatelessWidget {
       ],
     );
   }
-}
-
-extension StringCasingExtension on String {
-  String toCapitalized() =>
-      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
-
-  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
-      .split(' ')
-      .map((str) => str.toCapitalized())
-      .join(' ');
 }

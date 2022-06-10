@@ -34,7 +34,7 @@ class MenuPrincipalController extends GetxController {
       case 'Pedido - Cliente':
         getPedidoCliente();
         break;
-      case 'Lote':
+      case 'Lote':getLote();
         break;
       case 'Rastreio': getRastreio();
         break;
@@ -51,7 +51,8 @@ class MenuPrincipalController extends GetxController {
     //MOVER PARA A PAGINA DE PEDIDO DO CLIENTE
   }
 
-  getLote(String data) {
+  getLote() {
+    Get.toNamed('/loteFilterPage');
     //MOVER PARA A PAGINA DE LOTE
   }
 
