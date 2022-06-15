@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:norteste_gerencial/constants.dart';
+import 'lote_faturamento_card.dart';
 import 'lote_geral_card.dart';
+import 'lote_qualidade_card.dart';
 
 class LoteFilterPage extends StatelessWidget {
   const LoteFilterPage({Key? key}) : super(key: key);
@@ -22,34 +24,14 @@ class LoteFilterPage extends StatelessWidget {
       body: Container(
         color: Colors.grey[200],
         height: kSize.height,
-        child: Column(
-          children: [
+        child: ListView(
+          children: const [
             /// CONTAINER DE DETALHES GERAIS
-            const LoteGeralCard(),
+            LoteGeralCard(),
             /// ROW COM LANÇAMENTOS DE QUALIDADE
-            SizedBox(
-              height: kSize.height / 4,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    height: 100,
-                    width: kSize.width,
-                    color: Colors.purple,
-                  ),
-                  Container(
-                    height: 100,
-                    width: kSize.width,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    height: 100,
-                    width: kSize.width,
-                    color: Colors.amberAccent,
-                  ),
-                ],
-              ),
-            ),
+            LoteQualidadeCard(),
+            ///CONTAINER COM DADOS DE FATURAMENTO
+            LoteFaturamentoCard(),
           ],
         ),
       ),

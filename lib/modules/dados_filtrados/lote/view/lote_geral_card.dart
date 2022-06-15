@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:norteste_gerencial/comuns/format_string.dart';
-
 import '../../../../constants.dart';
-
 
 class LoteGeralCard extends StatelessWidget {
   const LoteGeralCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return             SizedBox(
+    return SizedBox(
       height: kSize.height / 3.3,
       width: kSize.width,
       child: Padding(
@@ -17,8 +15,7 @@ class LoteGeralCard extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding:
-              const EdgeInsets.only(top: 8.0, left: 0, right: 0),
+              padding: const EdgeInsets.only(top: 8.0, left: 0, right: 0),
               child: Align(
                 alignment: AlignmentDirectional.topStart,
                 child: Row(
@@ -43,13 +40,25 @@ class LoteGeralCard extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 0.0),
                               child: Center(
-                                child: Text(
-                                  'Dados do lote: 1234567'
-                                      .toUpperCase(),
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Lote: '.toUpperCase(),
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      '1234567'.toUpperCase(),
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.green,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -75,7 +84,10 @@ class LoteGeralCard extends StatelessWidget {
                                   ),
                                   Text(
                                     'MT 01 ESPIRAL TESTE',
-                                    style: TextStyle(fontSize: 13),
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -93,7 +105,10 @@ class LoteGeralCard extends StatelessWidget {
                                   ),
                                   Text(
                                     'CANUDO DE PAPEL 79,5 X 12 X 800',
-                                    style: TextStyle(fontSize: 13),
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -111,7 +126,10 @@ class LoteGeralCard extends StatelessWidget {
                                   ),
                                   Text(
                                     '10/06/2022',
-                                    style: TextStyle(fontSize: 13),
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -128,8 +146,10 @@ class LoteGeralCard extends StatelessWidget {
                                   ),
                                   Text(
                                     'adriano'.toCapitalized(),
-                                    style:
-                                    const TextStyle(fontSize: 13),
+                                    style: const TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),
@@ -146,7 +166,10 @@ class LoteGeralCard extends StatelessWidget {
                                   ),
                                   Text(
                                     '26000 peças',
-                                    style: TextStyle(fontSize: 13),
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ],
                               ),

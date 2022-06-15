@@ -43,7 +43,6 @@ class AnimatedSearch extends StatelessWidget {
                                   await SharedPreferences.getInstance();
                               await prefs.setString(
                                   'filter', controller.textFilter.text);
-
                               if (controller.textFilter.text != '') {
                                 if (value.selectedFilter ==
                                     'Pedido - Interno') {
@@ -54,7 +53,6 @@ class AnimatedSearch extends StatelessWidget {
                                   await prefs.setString(
                                       'request_type', 'cliente');
                                 }
-
                                 value.dataFilter(
                                     value.selectedFilter.toString());
                               }
@@ -85,9 +83,10 @@ class AnimatedSearch extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
                   decoration: BoxDecoration(
                       border: Border.all(
-                          color: Colors.blueGrey,
-                          width: 0,
-                          style: BorderStyle.solid),
+                        color: Colors.blueGrey,
+                        width: 0,
+                        style: BorderStyle.solid,
+                      ),
                       borderRadius: BorderRadius.circular(8)),
                   child: Visibility(
                     visible: value.viewSearch,
