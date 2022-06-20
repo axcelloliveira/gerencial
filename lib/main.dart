@@ -1,3 +1,4 @@
+import 'package:norteste_gerencial/modules/dados_filtrados/lote/bindings/lote_filter_bindings.dart';
 import 'package:norteste_gerencial/modules/dados_filtrados/pedido_interno/view/pedido_interno_page.dart';
 import 'package:norteste_gerencial/modules/dados_filtrados/rastreio/view/rastreabilidade_page.dart';
 import 'package:norteste_gerencial/modules/principal/view/last_sent/general_last_sent.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
           page: () =>  TotalSentPage(),
         ),
         GetPage(
+          binding: LoteFilterBindings(),
           name: '/loteFilterPage',
           page: ()=> const LoteFilterPage(),
     ),

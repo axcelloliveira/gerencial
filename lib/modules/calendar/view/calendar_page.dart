@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../model/meeting_model.dart';
+import 'legend_calendar.dart';
 
 class CalendarPage extends StatelessWidget {
   CalendarPage({Key? key}) : super(key: key);
@@ -20,6 +21,22 @@ class CalendarPage extends StatelessWidget {
         return true;
       },
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size(MediaQuery.of(context).size.width, 50),
+          child: AppBar(
+            iconTheme: const IconThemeData(color: Colors.black),
+            centerTitle: true,
+            title: const Text(
+              'Quadro de Entregas',
+              style: TextStyle(color: Colors.black),
+            ),
+            actions: const[
+              LegendCalendar(),
+            ],
+            elevation: 1,
+            backgroundColor: Colors.white,
+          ),
+        ),
         body: FutureBuilder(
           future: getDataFromWeb(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
