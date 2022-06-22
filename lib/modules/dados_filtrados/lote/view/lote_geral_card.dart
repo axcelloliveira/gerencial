@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:norteste_gerencial/comuns/format_string.dart';
 import 'package:norteste_gerencial/modules/dados_filtrados/lote/controller/lote_geral_controller.dart';
 import 'package:norteste_gerencial/modules/dados_filtrados/lote/model/lote_geral_model.dart';
+import 'package:norteste_gerencial/widgets/custom_loading.dart';
 import '../../../../constants.dart';
 
 class LoteGeralCard extends GetView<LoteGeralController> {
@@ -135,9 +136,10 @@ class LoteGeralCard extends GetView<LoteGeralController> {
                                         Text(
                                           item.data.toString(),
                                           style: const TextStyle(
-                                              fontSize: 13,
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w500),
+                                            fontSize: 13,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -178,6 +180,20 @@ class LoteGeralCard extends GetView<LoteGeralController> {
           ),
         ),
       ),
+      onLoading: Padding(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height / 20,
+        ),
+        child: const CustomLoading(),
+      ),
+      onError: (error) {
+        return Padding(
+          padding: EdgeInsets.only(top: kSize.height / 2.5),
+          child: const Center(
+            child: Text('Lote não encontrado'),
+          ),
+        );
+      },
     );
   }
 }

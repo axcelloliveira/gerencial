@@ -101,7 +101,7 @@ class CalendarPage extends StatelessWidget {
 
   Future<List<Meeting>> getDataFromWeb() async {
     var data = await http
-        .get(Uri.parse("http://24.152.37.103:8083/eventos/carregaEntregas"))
+        .get(Uri.parse("https://www.9487.masterdaweb.net:8083/eventos/carregaEntregas"))
         .timeout(const Duration(seconds: 16));
     var jsonData = json.decode(data.body);
     final List<Meeting> appointmentData = [];

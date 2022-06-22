@@ -68,8 +68,9 @@ class LegendCalendar extends StatelessWidget {
                 width: 15,
                 height: 15,
                 decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    borderRadius: BorderRadiusDirectional.circular(12)),
+                  color: Colors.deepPurple,
+                  borderRadius: BorderRadiusDirectional.circular(12),
+                ),
               ),
               const SizedBox(width: 15),
               const Text('Em Corte'),

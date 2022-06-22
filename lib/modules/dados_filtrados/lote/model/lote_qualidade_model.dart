@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 class LoteQualidadeModel {
-  double? pesoInteiro;
-  double? pesoRefilado;
-  double? comprimentoInteiro;
-  double? comprimentoRefilado;
+  var pesoInteiro;
+  var pesoRefilado;
+  var comprimentoInteiro;
+  var comprimentoRefilado;
   String? responsavel;
 
   LoteQualidadeModel(

@@ -14,7 +14,7 @@ class LoteGeralRepository implements ILoteGeralRepository {
     String port = prefs.getString('port')!;
     String? url;
 
-      url = ':$port/eventos2/geralLote?pLote=2515031';
+    url = ':$port/eventos2/geralLote?pLote=$data';
 
     final response = await restClient.get(url, decoder: (body) {
       if (body is List) {

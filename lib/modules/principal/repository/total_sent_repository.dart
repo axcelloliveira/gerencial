@@ -5,7 +5,7 @@ Future<String?> totalSentConnection() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String port = prefs.getString('port')!;
 
-  var url = 'http://24.152.37.103:$port/eventos2/faturamentoMes';
+  var url = 'https://www.9487.masterdaweb.net:$port/eventos2/faturamentoMes';
 
   http.Response resposta;
   try {

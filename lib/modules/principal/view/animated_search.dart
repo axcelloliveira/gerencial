@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../comuns/custom_snackbar.dart';
 import '../controller/menu_principal_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,31 +33,50 @@ class AnimatedSearch extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 4.0, left: 4.0),
                   child: TextField(
+                    onSubmitted: (String value2) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.setString(
+                          'filter', controller.textFilter.text);
+                      if (controller.textFilter.text != '') {
+                        if (value.selectedFilter == 'Pedido - Interno') {
+                          await prefs.setString('request_type', 'interno');
+                          value.dataFilter(value.selectedFilter.toString());
+                        } else if (value.selectedFilter == 'Pedido - Cliente') {
+                          await prefs.setString('request_type', 'cliente');
+                          value.dataFilter(value.selectedFilter.toString());
+                        } else if (value.selectedFilter == 'Lote') {
+                          if (controller.textFilter.text.length < 7) {
+                            showSnackBar(
+                                message:
+                                    'Insira um lote válido. Lotes são compostos apenas por 7 numeros, '
+                                    'sem letras ou simbolos.',
+                                title: 'Lote invalido',
+                                backgroundColor: Colors.red);
+                          } else {
+                            value.dataFilter(value.selectedFilter.toString());
+                          }
+                        } else if (value.selectedFilter == 'Rastreio') {
+                          if (controller.textFilter.text.isNum) {
+                            value.dataFilter(value.selectedFilter.toString());
+                          } else {
+                            showSnackBar(
+                                message:
+                                    'Insira um rastreio válido. Rastreios são compostos apenas por numeros, '
+                                    'sem letras ou simbolos.',
+                                title: 'Rastreio invalido',
+                                backgroundColor: Colors.red);
+                          }
+                        }
+                      }
+                    },
                     controller: controller.textFilter,
                     decoration: InputDecoration(
                       suffixIcon: GetBuilder<MenuPrincipalController>(
                         builder: (value) => Visibility(
                           visible: value.viewSearch,
                           child: IconButton(
-                            onPressed: () async {
-                              SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-                              await prefs.setString(
-                                  'filter', controller.textFilter.text);
-                              if (controller.textFilter.text != '') {
-                                if (value.selectedFilter ==
-                                    'Pedido - Interno') {
-                                  await prefs.setString(
-                                      'request_type', 'interno');
-                                } else if (value.selectedFilter ==
-                                    'Pedido - Cliente') {
-                                  await prefs.setString(
-                                      'request_type', 'cliente');
-                                }
-                                value.dataFilter(
-                                    value.selectedFilter.toString());
-                              }
-                            },
+                            onPressed: () => _function(value),
                             icon: const Icon(Icons.search),
                           ),
                         ),
@@ -82,12 +102,13 @@ class AnimatedSearch extends StatelessWidget {
                   height: 38,
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
                   decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.blueGrey,
-                        width: 0,
-                        style: BorderStyle.solid,
-                      ),
-                      borderRadius: BorderRadius.circular(8)),
+                    border: Border.all(
+                      color: Colors.blueGrey,
+                      width: 0,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   child: Visibility(
                     visible: value.viewSearch,
                     child: DropdownButton<String>(
@@ -120,5 +141,41 @@ class AnimatedSearch extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _function(value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('filter', controller.textFilter.text);
+    if (controller.textFilter.text != '') {
+      if (value.selectedFilter == 'Pedido - Interno') {
+        await prefs.setString('request_type', 'interno');
+        value.dataFilter(value.selectedFilter.toString());
+      } else if (value.selectedFilter == 'Pedido - Cliente') {
+        await prefs.setString('request_type', 'cliente');
+        value.dataFilter(value.selectedFilter.toString());
+      } else if (value.selectedFilter == 'Lote') {
+        if (controller.textFilter.text.length < 7) {
+          showSnackBar(
+              message:
+                  'Insira um lote válido. Lotes são compostos apenas por 7 numeros, '
+                  'sem letras ou simbolos.',
+              title: 'Lote invalido',
+              backgroundColor: Colors.red);
+        } else {
+          value.dataFilter(value.selectedFilter.toString());
+        }
+      } else if (value.selectedFilter == 'Rastreio') {
+        if (controller.textFilter.text.isNum) {
+          value.dataFilter(value.selectedFilter.toString());
+        } else {
+          showSnackBar(
+              message:
+                  'Insira um rastreio válido. Rastreios são compostos apenas por numeros, '
+                  'sem letras ou simbolos.',
+              title: 'Rastreio invalido',
+              backgroundColor: Colors.red);
+        }
+      }
+    }
   }
 }

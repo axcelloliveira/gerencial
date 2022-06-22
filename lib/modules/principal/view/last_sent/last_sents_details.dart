@@ -21,46 +21,45 @@ class LastSentDetails extends GetView<LastSentController> {
             height: deviceHeight / 3.0,
             width: deviceWidth / 1.15,
             child: ListView.builder(
-                padding: const EdgeInsets.only(top: 6),
-                itemCount: 5,
-                itemBuilder: (_, int index) {
-                  final LastSentModel item = state[index];
-                  return SizedBox(
-                    height: 50,
-                    width: deviceWidth / 1.1,
-                    //color: Colors.amber,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                          width: 122,
-                          height: 20,
-                          child: Text(
-                            item.nomeCliente.toString(),
-                            overflow: TextOverflow.ellipsis,
-                          ),
+              padding: const EdgeInsets.only(top: 6),
+              itemCount: 5,
+              itemBuilder: (_, int index) {
+                final LastSentModel item = state[index];
+                return SizedBox(
+                  height: 50,
+                  width: deviceWidth / 1.1,
+                  //color: Colors.amber,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        width: 122,
+                        height: 20,
+                        child: Text(
+                          item.nomeCliente.toString(),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0.0, right: 34),
-                          child: item.valorNfe != ''
-                              ? Text(formatCurrency.format(double.parse(item
-                                  .valorNfe
-                                  .toString()
-                                  .replaceAll(',', '.'))))
-                              : const Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 16.0, right: 15.0),
-                                  child: Text(
-                                    'NC',
-                                    style: TextStyle(color: Colors.red),
-                                  ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0.0, right: 34),
+                        child: item.valorNfe != ''
+                            ? Text(formatCurrency.format(double.parse(
+                                item.valorNfe.toString().replaceAll(',', '.'))))
+                            : const Padding(
+                                padding:
+                                    EdgeInsets.only(left: 16.0, right: 15.0),
+                                child: Text(
+                                  'NC',
+                                  style: TextStyle(color: Colors.red),
                                 ),
-                        ),
-                        Text(item.data.toString().substring(0, 10)),
-                      ],
-                    ),
-                  );
-                }),
+                              ),
+                      ),
+                      Text(item.data.toString().substring(0, 10)),
+                    ],
+                  ),
+                );
+              },
+            ),
           );
         },
         onError: (error) {

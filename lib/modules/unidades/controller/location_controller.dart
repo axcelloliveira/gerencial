@@ -39,7 +39,6 @@ class LocationController extends GetxController {
       final prefs = await SharedPreferences.getInstance();
       String position = prefs.getString('position')!;
       String id = prefs.getString('id')!;
-
       if (position == 'ADM') {
         LocationRepository locationRepository = LocationRepository();
         String response =

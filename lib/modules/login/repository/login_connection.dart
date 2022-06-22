@@ -9,7 +9,7 @@ import 'dart:developer' as developer;
 
 Future loginConnection(String user, String password) async {
   var url =
-      'http://24.152.37.103:8083/eventos2/loginNuvem?Usuario=$user&Senha=$password';
+      'https://www.9487.masterdaweb.net:8083/eventos2/loginNuvem?Usuario=$user&Senha=$password';
 
   http.Response resposta;
   try {
