@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:norteste_gerencial/constants.dart';
 import 'package:norteste_gerencial/modules/principal/controller/top_app_bar_controller.dart';
 import 'package:norteste_gerencial/modules/principal/model/card_data_model.dart';
 import 'package:norteste_gerencial/modules/principal/view/general_cards/menu_card.dart';
@@ -15,7 +16,7 @@ class GeneralInfoCard extends GetView<TopAppBarController> {
       child: controller.obx(
         (state) {
           return SizedBox(
-            height: 135,
+            height: kSize.height/5.5,
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

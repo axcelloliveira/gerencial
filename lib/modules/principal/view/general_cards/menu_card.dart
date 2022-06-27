@@ -46,6 +46,7 @@ class MenuCard extends StatelessWidget {
           value: valorCardPapel,
           weight: pesoCardPapel,
           viewValue: true,
+          type: 1,
         ),
         const SizedBox(width: 10),
         CardsDetails(
@@ -53,18 +54,21 @@ class MenuCard extends StatelessWidget {
           value: '',
           weight: cardProdDiaria,
           viewValue: false,
+          type: 2,
         ),
         CardsDetails(
           title: 'Produção acumulada: ${date.toCapitalized()}',
           value: '',
           weight: cardProdAcumulada,
           viewValue: false,
+          type: 3,
         ),
         CardsDetails(
           title: 'Estoque Expedição',
           value: '',
           weight: pesoCardEstoque,
           viewValue: false,
+          type: 4,
         ),
       ],
     );
