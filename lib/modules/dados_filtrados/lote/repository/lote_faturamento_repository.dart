@@ -16,16 +16,21 @@ class LoteFaturamentoRepository implements ILoteFaturamentoRepository {
 
     url = ':$port/eventos2/faturamentoLote?pLote=$data';
 
-    final response = await restClient.get(url, decoder: (body) {
-      if (body is List) {
+    final response = await restClient.get(
+      url,
+      decoder: (body) {
+        if (body is List) {
+          return body
+              .map<LoteFaturamentoModel>(
+                  (resp) => LoteFaturamentoModel.fromMap(resp))
+              .toList();
+        }
         return body
-            .map<LoteFaturamentoModel>((resp) => LoteFaturamentoModel.fromMap(resp))
+            .map<LoteFaturamentoModel>(
+                (resp) => LoteFaturamentoModel.fromMap(resp))
             .toList();
-      }
-      return body
-          .map<LoteFaturamentoModel>((resp) => LoteFaturamentoModel.fromMap(resp))
-          .toList();
-    });
+      },
+    );
     if (response.hasError) {
       throw Exception('Erro ao buscar Cards');
     }

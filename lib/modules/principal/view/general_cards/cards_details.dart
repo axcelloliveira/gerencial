@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../detalhes_papel/view/detalhes_papel_page.dart';
 
 class CardsDetails extends StatelessWidget {
   final String? title;
@@ -104,7 +103,7 @@ class CardsDetails extends StatelessWidget {
                     onPressed: () {
                       switch (type) {
                         case 1:
-                          Get.to(const DetalhesPapelPage());
+                          Get.toNamed('/detalhesPapelPage');
                           break;
                         case 2:
                           print('aaa');

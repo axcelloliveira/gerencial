@@ -12,10 +12,11 @@ class DetalhesPapelRepository implements IDetalhesPapelRepository {
   Future<List<DetalhesPapelModel>> findAllData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String port = prefs.getString('port')!;
+    String order = prefs.getString('order')!;
     String? url;
 
-    url = ':$port/eventos2/faturamentoLote?detalhesPapel';
-
+    url = ':$port/eventos2/papelDetalhado?pOrder=$order';
+print(url);
     final response = await restClient.get(url, decoder: (body) {
       if (body is List) {
         return body

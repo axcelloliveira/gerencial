@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 class DetalhesPapelModel {
-  double? quantidade;
-  String? produto;
-  int? gramatura;
-  int? largura;
+  var quantidade;
+  var produto;
+  var gramatura;
+  var largura;
 
   DetalhesPapelModel(
       {this.quantidade, this.produto, this.gramatura, this.largura});
